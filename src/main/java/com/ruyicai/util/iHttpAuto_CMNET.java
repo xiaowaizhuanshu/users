@@ -2,8 +2,6 @@ package com.ruyicai.util;
 /**
  * 
  * @author 
- * (C)版权由北京神谷数码科贸有限公司所有
- * 网址：www.ruyicai.com
 * 创建者：
 * 创建日期：
 * 修改记录：

@@ -74,9 +74,6 @@ public class PhoneBindAction extends BaseAction {
 						&& CommonUtil.getBackValue("errorCode", update).equals(
 								"0")) {
 
-					// 调用绑定手机号码成功赠送3元彩金
-					dto_Activity.inDataIsFirstRegistrGift(userno, mobileid);
-
 					// 修改成功后,更新缓存中的用户信息
 					JSONObject userinfo = update.getJSONObject("value");
 

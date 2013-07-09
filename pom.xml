@@ -16,32 +16,49 @@
 		<repository>
 			<id>ruyicai</id>
 			<name>Ruyicai Repository</name>
-			<url>http://202.43.152.162:8181/nexus/content/repositories/public/</url>
+			<url>http://202.43.152.168/nexus/content/repositories/public/</url>
+		</repository>
+		<repository>
+			<id>cloudhopper</id>
+			<name>cloudhopper Repository</name>
+			<url>http://maven.cloudhopper.com/repos/third-party/</url>
 		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
 			<id>ruyicai</id>
 			<name>Ruyicai Repository</name>
-			<url>http://202.43.152.162:8181/nexus/content/repositories/public/</url>
+			<url>http://202.43.152.168/nexus/content/repositories/public/</url>
 		</pluginRepository>
 	</pluginRepositories>
 	<dependencies>
-		<dependency>
+		<!-- <dependency>
 			<groupId>proxool</groupId>
 			<artifactId>proxool-cglib</artifactId>
 			<version>1.7.0</version>
-		</dependency>
+		</dependency> -->
 		<dependency>
 		    <groupId>org.apache.struts</groupId>
 		    <artifactId>struts2-spring-plugin</artifactId>
 		    <version>2.3.1.2</version>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>proxool</groupId>
 			<artifactId>proxool</artifactId>
 			<version>0.9.1</version>
-		</dependency>
+		</dependency> -->
+		
+		<dependency>
+           <groupId>proxool</groupId>
+           <artifactId>proxool-cglib</artifactId>
+           <version>0.9.1</version>
+       </dependency>
+         <dependency>
+           <groupId>proxool</groupId>
+           <artifactId>proxool</artifactId>
+           <version>0.9.1</version>
+       </dependency>
+       
 		<dependency>
 		    <groupId>mysql</groupId>
 		    <artifactId>mysql-connector-java</artifactId>
@@ -213,40 +230,36 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
+				<!-- 数据源配置信息 -->
 				<mysql.driver>com.mysql.jdbc.Driver</mysql.driver>
-				<mysql.url>jdbc:mysql://192.168.0.182:3306/webCMS?characterEncoding=utf-8</mysql.url>
-			    <mysql.username>root1</mysql.username>
-				<mysql.password>testroot</mysql.password>
+				<mysql.url>jdbc:mysql://localhost:3306/webCMS?characterEncoding=utf-8</mysql.url>
+				<mysql.username>root</mysql.username>
+				<mysql.password>root</mysql.password>
+				<!-- memcache 服务器地址 -->
+				<memCacheServerUrl>192.168.15.15:12000</memCacheServerUrl>
+				<!-- 彩票地址 -->
+				<linkURL>http://192.168.15.15:8888/lottery</linkURL>
+				<!-- 代理用户 -->
+				<agencyUrl>http://192.168.15.15:9988/agencycenter</agencyUrl>
+				<!-- 如意彩点卡充值 -->
+				<msbankUrl>http://192.168.15.15:9999/ChargeCenter</msbankUrl>
+				<!-- cookie生效范围 -->
+				<cookiesDomain>.test.com</cookiesDomain>
+				<!-- 短信地址 -->
+				<linkSMGUrl>http://192.168.15.15:7777/msgcenter/</linkSMGUrl>
 				
-				<linkURL>http://192.168.0.42:8080/lottery</linkURL>
-				<baseUrl>http\://219.148.162.70\:8000/jrtLot/</baseUrl>
-				<memCacheServerUrl>192.168.0.92:12000</memCacheServerUrl>
-				<linkSCOREUrl>http\://192.168.0.118:8000/scorecenter</linkSCOREUrl>
-				<cookiesDomain>.ruyicai.com</cookiesDomain>
-				<linkSMGUrl>http://192.168.0.118:8000/msgcenter/</linkSMGUrl>
-				<agencyUrl>http://192.168.0.118:8000/agencycenter</agencyUrl>
-				<linksmsCount>http://jrtcms.ruyicai.com\:8080/web</linksmsCount>
-				<msbankUrl>http://219.148.162.70:9080/ChargeCenter</msbankUrl>
-				<sendUrl>http://jrtcms.ruyicai.com\:8080/WebInterface</sendUrl>
-			</properties>
-		</profile>
-		<profile>
-			<id>prelanch</id>
-			<properties>
-				<mysql.driver>com.mysql.jdbc.Driver</mysql.driver>
-				<mysql.url>jdbc:mysql://192.168.99.120:3306/webCMS?characterEncoding=utf-8</mysql.url>
-			    <mysql.username>jrtConsole</mysql.username>
-				<mysql.password>jrtConsole</mysql.password>
-				<linkURL>http://192.168.99.6/lottery</linkURL>
-				<baseUrl>http\://192.168.99.9/jrtLot/</baseUrl>
-				<memCacheServerUrl>192.168.99.9:12000</memCacheServerUrl>
-				<linkSCOREUrl>http\://192.168.99.6/scorecenter</linkSCOREUrl>
-				<cookiesDomain>.ruyicai.com</cookiesDomain>
-				<linkSMGUrl>http://192.168.99.6/msgcenter/</linkSMGUrl>
-				<linksmsCount>http://jrtcms.ruyicai.cn/web</linksmsCount>
-				<agencyUrl>http://192.168.99.6/agencycenter</agencyUrl>
-				<msbankUrl>http://192.168.99.2/ChargeCenter</msbankUrl>
-				<sendUrl>http://jrtcms.ruyicai.cn/WebInterface</sendUrl>
+				<appAddress>http://test.com:8090</appAddress>
+				<appAddressUser>http://test.com</appAddressUser>
+				<appAddressWap>http://test.com/wap</appAddressWap>
+				
+				<!-- 后台链接地址 
+				<baseUrl>http\://219.148.162.70\:8000/jrtLot/</baseUrl>-->
+				<!-- 积分地址 
+				<linkSCOREUrl>http\://192.168.0.118:8000/scorecenter</linkSCOREUrl>-->
+				<!-- 赠送彩金 
+				<sendUrl>http://jrtcms.ruyicai.com\:8080/WebInterface</sendUrl>-->
+				<!-- 短信计数
+				<linksmsCount>http://jrtcms.ruyicai.com\:8080/web</linksmsCount> -->				
 			</properties>
 		</profile>
 	</profiles>
