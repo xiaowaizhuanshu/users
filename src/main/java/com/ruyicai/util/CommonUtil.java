@@ -11,7 +11,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -40,73 +39,66 @@ import com.ruyicai.bean.Tuserinfo;
  */
 public class CommonUtil {
 	private static Logger logger = Logger.getLogger(CommonUtil.class);
-	private static ResourceBundle rbint = ResourceBundle.getBundle("ruyicai") ;
 
-	//新的链接地址
-	public static final String USER_LINKURL = rbint.getString("linkURL");
-	public static final String COOKIES_DOMAIN = rbint.getString("cookiesDomain");
+	public static void unRepeatRandom() {
+		Random rdm = new Random(System.currentTimeMillis());
+		int intRd = Math.abs(rdm.nextInt()) % 32 + 1;
+	}
 
-	public static void unRepeatRandom(){
-        Random rdm = new Random(System.currentTimeMillis());
-        int  intRd = Math.abs(rdm.nextInt())%32+1;
-     
-}
 	public static void main(String[] args) {
 		unRepeatRandom();
-		
+
 	}
-	
+
 	/**
 	 * 验证用户名不能为空，不能带有特殊符号，并且开头字符要以字母开头
 	 * @param userName
 	 * @return
 	 */
-	public static String checkUserName(String userName){
-		String rex="^[a-z]{1}[a-z0-9_]{3,15}$";
-		Pattern pattern=Pattern.compile(rex);
-		Matcher matcher=pattern.matcher(userName);
-		if(userName==null){
+	public static String checkUserName(String userName) {
+		String rex = "^[a-z]{1}[a-z0-9_]{3,15}$";
+		Pattern pattern = Pattern.compile(rex);
+		Matcher matcher = pattern.matcher(userName);
+		if (userName == null) {
 			return "用户名不能为空";
 		}
-		if(!matcher.matches()){
+		if (!matcher.matches()) {
 			return "用户名不能带有特殊符号，并且开头字符要以字母开头";
 		}
 		return "用户名验证成功";
 	}
-	
-	
+
 	/**
 	 * 验证昵称不能为空，不能带有特殊符号，并且开头字符要以字母开头
 	 * @param userName
 	 * @return
 	 */
-	public static String checkNickName(String nickName){
-		String rex="^[^0-9][A-Za-z0-9\u4e00-\u9fa5]{1,15}$";
-		Pattern pattern=Pattern.compile(rex);
-		Matcher matcher=pattern.matcher(nickName);
-		if(nickName==null){
+	public static String checkNickName(String nickName) {
+		String rex = "^[^0-9][A-Za-z0-9\u4e00-\u9fa5]{1,15}$";
+		Pattern pattern = Pattern.compile(rex);
+		Matcher matcher = pattern.matcher(nickName);
+		if (nickName == null) {
 			return "昵称不能为空";
 		}
-		if(!matcher.matches()){
+		if (!matcher.matches()) {
 			return "昵称不能带有特殊符号，并且开头字符要以字母开头";
 		}
 		return null;
 	}
-	
-	
+
 	/**
 	 * 验证真实姓名不能为空，不能带有特殊符号，并且只能为中文
 	 * @param userName
 	 * @return
 	 */
-	public static String checkName(String Name){
-		String rex="^[\u4e00-\u9fa5]+$";
-		Pattern pattern=Pattern.compile(rex);
-		Matcher matcher=pattern.matcher(Name);
-		if(Name==null){
+	public static String checkName(String Name) {
+		String rex = "^[\u4e00-\u9fa5]+$";
+		Pattern pattern = Pattern.compile(rex);
+		Matcher matcher = pattern.matcher(Name);
+		if (Name == null) {
 			return "真实姓名不能为空";
 		}
-		if(!matcher.matches()){
+		if (!matcher.matches()) {
 			return "真实姓名不能带有特殊符号，并且只允许为中文";
 		}
 		return null;
@@ -122,7 +114,7 @@ public class CommonUtil {
 		String re = "^(13[0-9]|15[0-9]|18[0-9])\\d{8}$";
 		Pattern pattern = Pattern.compile(re);
 		Matcher matcher = pattern.matcher(mobileId);
-		if(mobileId == null){
+		if (mobileId == null) {
 			return false;
 		}
 		if (!matcher.matches()) {
@@ -130,7 +122,7 @@ public class CommonUtil {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * 
 	 * 过滤移动手机号码
@@ -141,7 +133,7 @@ public class CommonUtil {
 		String re = "^(13[4-9]|147|15[0,1,2,7,8,9]|18[7,8])\\d{8}$";
 		Pattern pattern = Pattern.compile(re);
 		Matcher matcher = pattern.matcher(mobileId);
-		if(mobileId == null){
+		if (mobileId == null) {
 			return false;
 		}
 		if (!matcher.matches()) {
@@ -149,7 +141,7 @@ public class CommonUtil {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * 
 	 * @Title: 登录验证
@@ -161,9 +153,9 @@ public class CommonUtil {
 	 * 
 	 */
 	public static String checkLoginInfo(String username, String password) {
-		if(username.indexOf("@") != -1){
+		if (username.indexOf("@") != -1) {
 			isEmailCode(username);
-		}else{
+		} else {
 			verifyMobileId(username);
 		}
 		verifyPassword(password);
@@ -185,8 +177,7 @@ public class CommonUtil {
 		verifyPassword(password);
 		return null;
 	}
-	
-	
+
 	/**
 	 * 
 	 * @Title: 注册验证
@@ -199,12 +190,11 @@ public class CommonUtil {
 	 * @return: 验证的信息
 	 * 
 	 */
-	public static String checkRegisterInfo(String username,String nickname, String password,
-			String realPass) {
-		
-		if(username.indexOf("@") != -1){
+	public static String checkRegisterInfo(String username, String nickname, String password, String realPass) {
+
+		if (username.indexOf("@") != -1) {
 			isEmailCode(username);
-		}else{
+		} else {
 			verifyMobileId(username);
 		}
 		checkNickName(nickname);
@@ -214,8 +204,6 @@ public class CommonUtil {
 		}
 		return null;
 	}
-	
-	
 
 	/**
 	 * 
@@ -225,8 +213,7 @@ public class CommonUtil {
 	 * @return:
 	 */
 	public static String checkCardID(String cardID) {
-		if (cardID == null || (cardID.trim()).length() != 15
-				&& (cardID.trim()).length() != 18) {
+		if (cardID == null || (cardID.trim()).length() != 15 && (cardID.trim()).length() != 18) {
 			return "身份证号码必须是15位或18位";
 		}
 		//Pattern pattern1 = Pattern.compile("^[0-9]{15}");
@@ -248,8 +235,7 @@ public class CommonUtil {
 			try {
 				Date userDate = simple.parse(userAge);
 				Date sysDate = simple.parse(sysTime);
-				Long day = (sysDate.getTime() - userDate.getTime())
-						/ (24 * 60 * 60 * 1000);
+				Long day = (sysDate.getTime() - userDate.getTime()) / (24 * 60 * 60 * 1000);
 				long years = Math.round(day / 365);
 				if (years < 18) {
 					return "你还不满18周岁!";
@@ -265,8 +251,7 @@ public class CommonUtil {
 			try {
 				Date userDate = simple.parse(userAge);
 				Date sysDate = simple.parse(sysTime);
-				Long day = (sysDate.getTime() - userDate.getTime())
-						/ (24 * 60 * 60 * 1000);
+				Long day = (sysDate.getTime() - userDate.getTime()) / (24 * 60 * 60 * 1000);
 				long years = Math.round(day / 365);
 				if (years < 18) {
 					return "你还不满18周岁!";
@@ -286,21 +271,20 @@ public class CommonUtil {
 	 * @return:
 	 */
 	public static boolean verifyPassword(String str) {
-		String rex="^[a-z0-9_]+$";
-		Pattern pattern=Pattern.compile(rex);
-		Matcher matcher=pattern.matcher(str);
+		String rex = "^[a-z0-9_]+$";
+		Pattern pattern = Pattern.compile(rex);
+		Matcher matcher = pattern.matcher(str);
 		if (str == null || str.trim().length() < 6 || str.trim().length() > 16) {
 			return false;
 		}
-		if(!matcher.matches()){
+		if (!matcher.matches()) {
 			return false;
 		}
 		return true;
 	}
 
 	// 过滤特殊字符
-	public static boolean isStringFilter(String str)
-			throws PatternSyntaxException {
+	public static boolean isStringFilter(String str) throws PatternSyntaxException {
 		// 只允许字母和数字
 		// String regEx = "[^a-zA-Z0-9]";
 		// 清除掉所有特殊字符
@@ -310,13 +294,13 @@ public class CommonUtil {
 		Matcher m = p.matcher(str);
 		return m.find();
 	}
-	
-//	//清除特殊字符
-//	public static String clearString(String str){
-//	
-//		String regEx = "[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
-//		return str.replace(oldChar, newChar)
-//	}
+
+	//	//清除特殊字符
+	//	public static String clearString(String str){
+	//	
+	//		String regEx = "[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
+	//		return str.replace(oldChar, newChar)
+	//	}
 
 	/**
 	 * 验证字符串是否为空
@@ -340,8 +324,7 @@ public class CommonUtil {
 	public static boolean isPhoneCode(String phoneCode) {
 		boolean b = true;
 		if (!CommonUtil.isEmptyString(phoneCode)) {
-			Pattern p = Pattern
-					.compile("\\d{10,12}||\\d{10,12}(_\\d{10,12}){1}");
+			Pattern p = Pattern.compile("\\d{10,12}||\\d{10,12}(_\\d{10,12}){1}");
 			Matcher m = p.matcher(phoneCode);
 			b = m.matches();
 		}
@@ -384,7 +367,7 @@ public class CommonUtil {
 		}
 		return b;
 	}
-	
+
 	/**
 	 * 
 	 * @Title:  isChargeMoney
@@ -393,17 +376,16 @@ public class CommonUtil {
 	 * @return:   
 	 * @exception:
 	 */
-	public static String isChargeMoney(String money){
-		if(money==null||money.trim().equals("")){
+	public static String isChargeMoney(String money) {
+		if (money == null || money.trim().equals("")) {
 			return MessageUtil.CAW_ZFBCharge_MoneyNotEmpty;
 		}
-		if(Double.parseDouble(money) < 1
-					|| Double.parseDouble(money) > 9223372036854775807L){
+		if (Double.parseDouble(money) < 1 || Double.parseDouble(money) > 9223372036854775807L) {
 			return MessageUtil.CAW_ZFBCharge_MoneyIsNum;
 		}
-		Pattern pattern = Pattern.compile("^[1-9]{1}[0-9]*") ;
+		Pattern pattern = Pattern.compile("^[1-9]{1}[0-9]*");
 		Matcher matcher = pattern.matcher(money);
-		if(! matcher.matches()){
+		if (!matcher.matches()) {
 			return MessageUtil.CAW_ZFBCharge_MoneyIsNum;
 		}
 		return null;
@@ -417,22 +399,21 @@ public class CommonUtil {
 	 * @return:   
 	 * @exception:
 	 */
-	public static String isDNAChargeMoney(String money){
-		if(money.trim().equals("")||money==null){
+	public static String isDNAChargeMoney(String money) {
+		if (money.trim().equals("") || money == null) {
 			return MessageUtil.CAW_ZFBCharge_MoneyNotEmpty;
 		}
-		if(Double.parseDouble(money) < 20
-					|| Double.parseDouble(money) > 9223372036854775807L){
+		if (Double.parseDouble(money) < 20 || Double.parseDouble(money) > 9223372036854775807L) {
 			return MessageUtil.CAW_DNACharge_MoneyPatternError;
 		}
-		Pattern pattern = Pattern.compile("^[1-9]{1}[0-9]*") ;
+		Pattern pattern = Pattern.compile("^[1-9]{1}[0-9]*");
 		Matcher matcher = pattern.matcher(money);
-		if(! matcher.matches()){
+		if (!matcher.matches()) {
 			return MessageUtil.CAW_ZFBCharge_MoneyIsNum;
 		}
 		return null;
 	}
-	
+
 	/**
 	 *
 	 * @Title:  verifyCardNo
@@ -442,20 +423,20 @@ public class CommonUtil {
 	 * @exception:
 	 */
 	public static String verifyCardNo(String str) {
-		
-		if(str==null||str.trim().replace("'", "").equals("")) {
+
+		if (str == null || str.trim().replace("'", "").equals("")) {
 			return MessageUtil.CAW_DNACharge_CardNotEmpty;
 		}
-		
+
 		Pattern pattern = Pattern.compile("^([1-9]{1}[0-9]*)");
 		Matcher matcher = pattern.matcher(str);
 		boolean isMatch = matcher.matches();
-		if (!isMatch||str.trim().replace("'", "").length()<10) {
+		if (!isMatch || str.trim().replace("'", "").length() < 10) {
 			return MessageUtil.CAW_DNACharge_CardPatternError;
 		}
 		return null;
 	}
-	
+
 	/**
 	 * 
 	 * @Title: isCashMoney
@@ -464,22 +445,17 @@ public class CommonUtil {
 	 * @return:
 	 * @exception:
 	 */
-	public static boolean isCashMoney(String drawMoney,
-			HttpServletRequest request) {
+	public static boolean isCashMoney(String drawMoney, HttpServletRequest request) {
 		// 验证提现金额是否是大于零的数字
-		if (drawMoney == null
-				|| drawMoney.trim().replace("'", "").length() == 0) {
-			request
-					.setAttribute("message",
-							MessageUtil.TIAW_cash_MoneyNotEmpty);
+		if (drawMoney == null || drawMoney.trim().replace("'", "").length() == 0) {
+			request.setAttribute("message", MessageUtil.TIAW_cash_MoneyNotEmpty);
 			return false;
 		}
 		Pattern pattern = Pattern.compile("^([1-9]{1}[0-9]*)");
 		Matcher matcher = pattern.matcher(drawMoney);
 		boolean isMatch = matcher.matches();
 		if (!isMatch) {
-			request.setAttribute("message",
-					MessageUtil.TIAW_cash_MoneyPatternError);
+			request.setAttribute("message", MessageUtil.TIAW_cash_MoneyPatternError);
 			return false;
 		}
 		return true;
@@ -496,8 +472,7 @@ public class CommonUtil {
 	 */
 	public static boolean isIDNumber(String IDNumber, HttpServletRequest request) {
 		if (IDNumber == null || IDNumber.trim().replace("'", "").length() < 16) {
-			request.setAttribute("message",
-					MessageUtil.TIAW_cash_MoneyPatternError);
+			request.setAttribute("message", MessageUtil.TIAW_cash_MoneyPatternError);
 			return false;
 		}
 
@@ -505,8 +480,7 @@ public class CommonUtil {
 		Matcher bnmatcher = bnpattern.matcher(IDNumber);
 		boolean bnisMatch = bnmatcher.matches();
 		if (!bnisMatch) {
-			request.setAttribute("message",
-					MessageUtil.TIAW_cash_BankNumberPatternError);
+			request.setAttribute("message", MessageUtil.TIAW_cash_BankNumberPatternError);
 			return false; // 返回消息提示页面
 		}
 		return true;
@@ -519,13 +493,13 @@ public class CommonUtil {
 	 * @param: str-要验证的字符
 	 * @exception:
 	 */
-	public static boolean isNotEmpty(String str){
-		if(str == null|| str.trim().replace("'", "").trim().length() == 0){
+	public static boolean isNotEmpty(String str) {
+		if (str == null || str.trim().replace("'", "").trim().length() == 0) {
 			return false;
 		}
 		return true;
 	}
-	
+
 	/**
 	 * 
 	 * 验证如意彩点卡卡号和密码
@@ -533,8 +507,8 @@ public class CommonUtil {
 	 * @param card_pwd 点卡密码
 	 * @return:   
 	 */
-	public static boolean isRycPointCardNo(String card_no,String card_pwd){
-		if(isNotEmpty(card_no)||isNotEmpty(card_pwd)){
+	public static boolean isRycPointCardNo(String card_no, String card_pwd) {
+		if (isNotEmpty(card_no) || isNotEmpty(card_pwd)) {
 			return false;
 		}
 		Pattern cardNoPattern = Pattern.compile("^[0-9]{16}");
@@ -544,12 +518,12 @@ public class CommonUtil {
 		}
 		Pattern cardPassPattern = Pattern.compile("^[0-9]{6}");
 		Matcher cardPassMatcher = cardPassPattern.matcher(card_pwd);
-		if(!cardPassMatcher.matches()){
+		if (!cardPassMatcher.matches()) {
 			return false;
 		}
 		return true;
 	}
-	
+
 	/**
 	 * 
 	 * @Title: processChannelId
@@ -559,12 +533,9 @@ public class CommonUtil {
 	 * @exception:
 	 */
 	public static String processChannelId(String type_code) {
-		return type_code.length() > 5 ? "B"
-				+ type_code.substring(type_code.length() - 5, type_code
-						.length()) : "B" + type_code;
+		return type_code.length() > 5 ? "B" + type_code.substring(type_code.length() - 5, type_code.length()) : "B"
+				+ type_code;
 	}
-
-	
 
 	/**
 	 * 
@@ -578,12 +549,11 @@ public class CommonUtil {
 	public static String getMultiple(String betCode, String lotNo) {
 		String multiple = "";
 		String bet[] = betCode.split("\\^");
-		if(betCode==null||betCode.equals("")){
+		if (betCode == null || betCode.equals("")) {
 			return multiple;
-		}else{
+		} else {
 			for (int i = 0; i < bet.length; i++) {
-				if ("B001".equals(lotNo) || "F47104".equals(lotNo)
-						|| "D3".equals(lotNo) || "F47103".equals(lotNo)
+				if ("B001".equals(lotNo) || "F47104".equals(lotNo) || "D3".equals(lotNo) || "F47103".equals(lotNo)
 						|| "QL730".equals(lotNo) || "F47102".equals(lotNo)) {
 					multiple = betCode.substring(2, 4);// 倍数
 					if (Integer.parseInt(multiple) < 10) {
@@ -594,9 +564,7 @@ public class CommonUtil {
 		}
 		return multiple;
 	}
-	
 
-	
 	/**
 	 * 
 	 * @Title:  getBackValue
@@ -606,11 +574,12 @@ public class CommonUtil {
 	 * @throws JSONException 
 	 * @exception:
 	 */
-	public static String getBackValue(String str,JSONObject objValue) throws JSONException{
-		String result =  objValue.get(str)==null?"":objValue.getString(str).equals("")?"":objValue.getString(str) ;
+	public static String getBackValue(String str, JSONObject objValue) throws JSONException {
+		String result = objValue.get(str) == null ? "" : objValue.getString(str).equals("") ? "" : objValue
+				.getString(str);
 		return result.trim();
 	}
-	
+
 	/**
 	 * 
 	 * 提现优化返回码
@@ -619,57 +588,80 @@ public class CommonUtil {
 	 * @exception:
 	 */
 	public static String getCashErrorCode(String error_code) {
-		String ttss="";
-		if(error_code.equals("090000")){
-			ttss="提现失败";
-		}if(error_code.equals("090001")){
-			ttss="您没有提现记录，请您提现";
-		}if(error_code.equals("090002")){
-			ttss="提现需求已进入审核状态，不允许修改";
-		}if(error_code.equals("090003")){
-			ttss="提现已进入执行阶段不允许修改";
-		}if(error_code.equals("090004")){
-			ttss="修改提现表失败";
-		}if(error_code.equals("090005")){
-			ttss="更新提现详细表失败";
-		}if(error_code.equals("090006")||error_code.equals("090007")){
-			ttss="修改交易表失败";
-		}if(error_code.equals("090008")){
-			ttss="向用户提现表中插入数据失败";
-		}if(error_code.equals("090009")){
-			ttss="更新用户提现表失败";
-		}if(error_code.equals("090010")){
-			ttss="更新失败";
-		}if(error_code.equals("090011")){
-			ttss="用户取消提现记录已存在或用户提现记录不存在";
-		}if(error_code.equals("090012")){
-			ttss="更新提现账户失败";
-		}if(error_code.equals("090013")){
-			ttss="更新用户账户金额失败";
-		}if(error_code.equals("090014")){
-			ttss="更新交易表用户交易状态失败";
-		}if(error_code.equals("090015")){
-			ttss="更新提现详细表提现状态失败";
-		}if(error_code.equals("090016")){
-			ttss="用户取消提现失败";
-		}if(error_code.equals("090017")){
-			ttss="手机号码不允许为空";
-		}if(error_code.equals("100000")||error_code.equals("090019")||error_code.equals("090020")){
-			ttss="提现修改失败";
-		}if(error_code.equals("090021")){
-			ttss="用户账户可提现余额小于提现金额";
-		}if(error_code.equals(LotErrorCode.CHYEBZ) ){
-			ttss="您的提现金额和手续费已超出可提现金额，请您重新输入提现金额";
-		}if(error_code.equals("090022")){
-			ttss="用户账户可提现金额大于余额";
-		}if(error_code.equals("090023")||error_code.equals("090024")){
-			ttss="用户可提现余额减去冻结金额小于提现金额";
-		}if(error_code.equals("090025")||error_code.equals("090026")||error_code.equals("090027")||error_code.equals("090028")){
-			ttss="用户提现修改失败";
+		String ttss = "";
+		if (error_code.equals("090000")) {
+			ttss = "提现失败";
+		}
+		if (error_code.equals("090001")) {
+			ttss = "您没有提现记录，请您提现";
+		}
+		if (error_code.equals("090002")) {
+			ttss = "提现需求已进入审核状态，不允许修改";
+		}
+		if (error_code.equals("090003")) {
+			ttss = "提现已进入执行阶段不允许修改";
+		}
+		if (error_code.equals("090004")) {
+			ttss = "修改提现表失败";
+		}
+		if (error_code.equals("090005")) {
+			ttss = "更新提现详细表失败";
+		}
+		if (error_code.equals("090006") || error_code.equals("090007")) {
+			ttss = "修改交易表失败";
+		}
+		if (error_code.equals("090008")) {
+			ttss = "向用户提现表中插入数据失败";
+		}
+		if (error_code.equals("090009")) {
+			ttss = "更新用户提现表失败";
+		}
+		if (error_code.equals("090010")) {
+			ttss = "更新失败";
+		}
+		if (error_code.equals("090011")) {
+			ttss = "用户取消提现记录已存在或用户提现记录不存在";
+		}
+		if (error_code.equals("090012")) {
+			ttss = "更新提现账户失败";
+		}
+		if (error_code.equals("090013")) {
+			ttss = "更新用户账户金额失败";
+		}
+		if (error_code.equals("090014")) {
+			ttss = "更新交易表用户交易状态失败";
+		}
+		if (error_code.equals("090015")) {
+			ttss = "更新提现详细表提现状态失败";
+		}
+		if (error_code.equals("090016")) {
+			ttss = "用户取消提现失败";
+		}
+		if (error_code.equals("090017")) {
+			ttss = "手机号码不允许为空";
+		}
+		if (error_code.equals("100000") || error_code.equals("090019") || error_code.equals("090020")) {
+			ttss = "提现修改失败";
+		}
+		if (error_code.equals("090021")) {
+			ttss = "用户账户可提现余额小于提现金额";
+		}
+		if (error_code.equals(LotErrorCode.CHYEBZ)) {
+			ttss = "您的提现金额和手续费已超出可提现金额，请您重新输入提现金额";
+		}
+		if (error_code.equals("090022")) {
+			ttss = "用户账户可提现金额大于余额";
+		}
+		if (error_code.equals("090023") || error_code.equals("090024")) {
+			ttss = "用户可提现余额减去冻结金额小于提现金额";
+		}
+		if (error_code.equals("090025") || error_code.equals("090026") || error_code.equals("090027")
+				|| error_code.equals("090028")) {
+			ttss = "用户提现修改失败";
 		}
 		return ttss;
 	}
-	
+
 	/**
 	 * 取得投注返回码
 	 * 
@@ -1064,30 +1056,29 @@ public class CommonUtil {
 		}
 		return ttss;
 	}
-	
-//	/**
-//	 * 获取所有交易类型id
-//	 */
-//	@SuppressWarnings("unchecked")
-//	public static Map getTtransactiontypeMap(){
-//		TtransactiontypeService service=new TtransactiontypeService();
-//		return service.getTtransactiontypeMap();
-//	}
-//	/**
-//	 * 获取所有交易类型
-//	 */
-//	@SuppressWarnings("unchecked")
-//	public static void getAllTransactiontype(HttpServletRequest request){
-//		Map linkMap=new LinkedHashMap();
-//		linkMap.put("", "全部");
-//		linkMap.putAll(getTtransactiontypeMap());
-//		request.setAttribute("transactiontypes", linkMap);
-//	}
-	
+
+	//	/**
+	//	 * 获取所有交易类型id
+	//	 */
+	//	@SuppressWarnings("unchecked")
+	//	public static Map getTtransactiontypeMap(){
+	//		TtransactiontypeService service=new TtransactiontypeService();
+	//		return service.getTtransactiontypeMap();
+	//	}
+	//	/**
+	//	 * 获取所有交易类型
+	//	 */
+	//	@SuppressWarnings("unchecked")
+	//	public static void getAllTransactiontype(HttpServletRequest request){
+	//		Map linkMap=new LinkedHashMap();
+	//		linkMap.put("", "全部");
+	//		linkMap.putAll(getTtransactiontypeMap());
+	//		request.setAttribute("transactiontypes", linkMap);
+	//	}
+
 	@SuppressWarnings("unchecked")
-	public static Map<String, String> getBankMap()
-	{
-		Map<String, String> banks=new HashMap<String, String>();
+	public static Map<String, String> getBankMap() {
+		Map<String, String> banks = new HashMap<String, String>();
 		//充值翻译
 		banks.put("y00003", "易宝充值");
 		banks.put("y00001", "易宝充值");
@@ -1099,12 +1090,13 @@ public class CommonUtil {
 		banks.put("msy001", "民生银行充值");
 		//banks.put("000100", "如意彩充值");
 		//用户提现的时候显示用
-//	    banks.put("0101", "招商银行卡");
-//		banks.put("0102", "建设银行卡");
-//		banks.put("0103", "工商银行卡");
-		
+		//	    banks.put("0101", "招商银行卡");
+		//		banks.put("0102", "建设银行卡");
+		//		banks.put("0103", "工商银行卡");
+
 		return banks;
 	}
+
 	/**
 	 * 
 	 * @Title:  getPayTypeMap
@@ -1114,21 +1106,20 @@ public class CommonUtil {
 	 * @exception:
 	 */
 	@SuppressWarnings("unchecked")
-	public static Map<String, String> getPayTypeMap()
-	{
-		Map<String, String> paytypes=new HashMap<String, String>();
+	public static Map<String, String> getPayTypeMap() {
+		Map<String, String> paytypes = new HashMap<String, String>();
 		paytypes.put("01", "银行卡");
 		paytypes.put("04", "自有账户自有卡(语音)");
 		paytypes.put("0101", "招商银行卡");
 		paytypes.put("0102", "建设银行卡");
 		paytypes.put("0103", "工商银行卡");
-		
+
 		paytypes.put("02", "非银行卡");
 		paytypes.put("0201", "骏网一卡通");
 		paytypes.put("0202", "盛大卡");
 		paytypes.put("0203", "神州行");
 		paytypes.put("0221", "电信充值卡");
-		
+
 		paytypes.put("0204", "征途卡");
 		paytypes.put("0205", "Q币卡");
 		paytypes.put("0206", "联通卡");
@@ -1137,68 +1128,65 @@ public class CommonUtil {
 		paytypes.put("0209", "网易卡");
 		paytypes.put("0210", "完美卡");
 		paytypes.put("0211", "搜狐卡");
-		
+
 		paytypes.put("03", "自有账户自有卡");
 		paytypes.put("0300", "自有账户自有卡");
-		
-		
+
 		return paytypes;
 	}
-		
-	
+
 	/**
 	 * 查询用户余额
 	 * @param request
 	 * @return
 	 */
-	public static  JSONObject fiandBalance(HttpServletRequest request) throws Exception{
-				
+	public static JSONObject fiandBalance(HttpServletRequest request) throws Exception {
+
 		// 得到用户
 		Tuserinfo user = Tuserinfo.setJson(JSONReslutUtil.getUserInfo(request).getJSONObject("value"));
 		JSONObject obj = getBalance(user.getUSERNO());
-		
+
 		// 得到后台的返回内容返回给页面
-		if(!obj.isNullObject()){
-			double balance = obj.getDouble("balance")/100;//账户余额
-			double freezebalance = obj.getDouble("freezebalance")/100;//冻结金额
-		    double drawbalance = obj.getDouble("drawbalance")/100;//用户账户的可提现金额
-		    
+		if (!obj.isNullObject()) {
+			double balance = obj.getDouble("balance") / 100;//账户余额
+			double freezebalance = obj.getDouble("freezebalance") / 100;//冻结金额
+			double drawbalance = obj.getDouble("drawbalance") / 100;//用户账户的可提现金额
+
 			double deposit_amount = balance - freezebalance; //可投注金额
-			double valid_amount = (balance-freezebalance) >= drawbalance ? drawbalance :(balance-freezebalance);//实际可提现金额
-			System.out.println("账户余额="+balance+";freezebalance="+freezebalance
-					+";提现金额drawbalance="+drawbalance+";余额-冻结金额(balance-freezebalance)="+(balance-freezebalance));
+			double valid_amount = (balance - freezebalance) >= drawbalance ? drawbalance : (balance - freezebalance);//实际可提现金额
+			System.out.println("账户余额=" + balance + ";freezebalance=" + freezebalance + ";提现金额drawbalance="
+					+ drawbalance + ";余额-冻结金额(balance-freezebalance)=" + (balance - freezebalance));
 			//算完之后重新赋值
 			obj.put("balance", deposit_amount);//可投注金额
 			obj.put("freezebalance", freezebalance);//冻结金额
 			obj.put("drawbalance", valid_amount);//实际可提现金额
-			
+
 		}
 		return obj;
 
 	}
-	
+
 	/**
 	 * 判断参数中的JSON是否为JSONArray 如果是 则返回true
 	 * @param re STRING Json结构
 	 * @param request 存入信息
 	 * @return
 	 */
-	public static boolean isJSONArray(String re,HttpServletRequest request){
-		if(re.substring(0,1).equals("{")){
-			JSONObject objValue=JSONObject.fromObject(re);
+	public static boolean isJSONArray(String re, HttpServletRequest request) {
+		if (re.substring(0, 1).equals("{")) {
+			JSONObject objValue = JSONObject.fromObject(re);
 			String error_code = objValue.getString("error_code");
-			if(LotErrorCode.WCHXX.equals(error_code)
-					|| LotErrorCode.WJL.equals(error_code)){
+			if (LotErrorCode.WCHXX.equals(error_code) || LotErrorCode.WJL.equals(error_code)) {
 				request.setAttribute("message", MessageUtil.SELECT_BET_MESSAGE);
-			}else if(LotErrorCode.WDL.equals(error_code)){
+			} else if (LotErrorCode.WDL.equals(error_code)) {
 				request.setAttribute("message", MessageUtil.TIAW_changeUserinfo_LoginMsg);
 			}
 			return false;
-		}else{
+		} else {
 			return true;
 		}
 	}
-	
+
 	/**
 	 * 返回对应的页数
 	 * @param page 当前选择页数
@@ -1207,32 +1195,32 @@ public class CommonUtil {
 	 * @param omission 设置前后间隔几页进行省略
 	 * @return
 	 */
-	public static String getPageToHtml(Integer page ,Integer maxLine , Integer limitCount,Integer omission){
+	public static String getPageToHtml(Integer page, Integer maxLine, Integer limitCount, Integer omission) {
 		String html = "";
-		Integer maxPage = (maxLine+limitCount-1)/limitCount;
-		
-		if(page!=null && page > 1){
+		Integer maxPage = (maxLine + limitCount - 1) / limitCount;
+
+		if (page != null && page > 1) {
 			html += "<a href='#' onclick='toPageList(1)'>第一页</a>　";
-			html += "<a href='#' onclick='toPageList("+(page-1)+")'>上一页</a>　";
+			html += "<a href='#' onclick='toPageList(" + (page - 1) + ")'>上一页</a>　";
 		}
-		for(int i = 0 ; i < maxPage ; i ++ ){
-			if((i+1)==page){
-				html +="<b>"+(i+1)+"</b>　";
-			}else if((i+omission+1)==page||(i-omission+1)==page){
-				html += "<a href='#' onclick='toPageList("+(i+1)+")'>...</a>　";
-			}else if(page!=null&&(page-omission-1)<i&&(page+omission-1)>i){
-				html += "<a href='#' onclick='toPageList("+(i+1)+")'>"+(i+1)+"</a>　";
+		for (int i = 0; i < maxPage; i++) {
+			if ((i + 1) == page) {
+				html += "<b>" + (i + 1) + "</b>　";
+			} else if ((i + omission + 1) == page || (i - omission + 1) == page) {
+				html += "<a href='#' onclick='toPageList(" + (i + 1) + ")'>...</a>　";
+			} else if (page != null && (page - omission - 1) < i && (page + omission - 1) > i) {
+				html += "<a href='#' onclick='toPageList(" + (i + 1) + ")'>" + (i + 1) + "</a>　";
 			}
 		}
-		if(page==null || page < maxPage){
-			html += "<a href='#' onclick='toPageList("+(page+1)+")'>下一页</a>　";
-			html += "<a href='#' onclick='toPageList("+maxPage+")'>尾页</a>　";
+		if (page == null || page < maxPage) {
+			html += "<a href='#' onclick='toPageList(" + (page + 1) + ")'>下一页</a>　";
+			html += "<a href='#' onclick='toPageList(" + maxPage + ")'>尾页</a>　";
 		}
-		
-		html +="　共"+maxPage+"页　"+maxLine+"条";
+
+		html += "　共" + maxPage + "页　" + maxLine + "条";
 		return html;
 	}
-	
+
 	/**投注查询的分页
 	 * 返回对应的页数
 	 * @param page 当前选择页数
@@ -1241,32 +1229,32 @@ public class CommonUtil {
 	 * @param omission 设置前后间隔几页进行省略
 	 * @return
 	 */
-	public static String getTZPageToHtml(Integer page ,Integer maxLine , Integer limitCount,Integer omission){
+	public static String getTZPageToHtml(Integer page, Integer maxLine, Integer limitCount, Integer omission) {
 		String html = "";
-		Integer maxPage = (maxLine+limitCount-1)/limitCount;
-		
-		if(page!=null && page > 1){
+		Integer maxPage = (maxLine + limitCount - 1) / limitCount;
+
+		if (page != null && page > 1) {
 			html += "<a href='#' onclick='toTZPageList(1)'>第一页</a>　";
-			html += "<a href='#' onclick='toTZPageList("+(page-1)+")'>上一页</a>　";
+			html += "<a href='#' onclick='toTZPageList(" + (page - 1) + ")'>上一页</a>　";
 		}
-		for(int i = 0 ; i < maxPage ; i ++ ){
-			if((i+1)==page){
-				html +="<b>"+(i+1)+"</b>　";
-			}else if((i+omission+1)==page||(i-omission+1)==page){
-				html += "<a href='#' onclick='toTZPageList("+(i+1)+")'>...</a>　";
-			}else if(page!=null&&(page-omission-1)<i&&(page+omission-1)>i){
-				html += "<a href='#' onclick='toTZPageList("+(i+1)+")'>"+(i+1)+"</a>　";
+		for (int i = 0; i < maxPage; i++) {
+			if ((i + 1) == page) {
+				html += "<b>" + (i + 1) + "</b>　";
+			} else if ((i + omission + 1) == page || (i - omission + 1) == page) {
+				html += "<a href='#' onclick='toTZPageList(" + (i + 1) + ")'>...</a>　";
+			} else if (page != null && (page - omission - 1) < i && (page + omission - 1) > i) {
+				html += "<a href='#' onclick='toTZPageList(" + (i + 1) + ")'>" + (i + 1) + "</a>　";
 			}
 		}
-		if(page==null || page < maxPage){
-			html += "<a href='#' onclick='toTZPageList("+(page+1)+")'>下一页</a>　";
-			html += "<a href='#' onclick='toTZPageList("+maxPage+")'>尾页</a>　";
+		if (page == null || page < maxPage) {
+			html += "<a href='#' onclick='toTZPageList(" + (page + 1) + ")'>下一页</a>　";
+			html += "<a href='#' onclick='toTZPageList(" + maxPage + ")'>尾页</a>　";
 		}
-		
-		html +="　共"+maxPage+"页　"+maxLine+"条";
+
+		html += "　共" + maxPage + "页　" + maxLine + "条";
 		return html;
 	}
-	
+
 	/**JSP页面使用的分页
 	 * 返回对应的页数
 	 * @param page 当前选择页数
@@ -1276,33 +1264,40 @@ public class CommonUtil {
 	 * @param formId 要提交的表单的ID
 	 * @return
 	 */
-	public static String getPageToJsp(Integer page ,Integer maxLine , Integer limitCount,Integer omission,String formId){
+	public static String getPageToJsp(Integer page, Integer maxLine, Integer limitCount, Integer omission, String formId) {
 		String html = "";
-		Integer maxPage = (maxLine+limitCount-1)/limitCount;
-		String fromIdSubmit ="$(\"#"+formId+"\").submit();";
-		
-		if(page!=null && page > 1){
-			html += "<span onclick='$(\"#"+formId+"\").find(\"input[name=pageIndex]\").val(\"1\");"+fromIdSubmit+"' class=\"fenye1\">首页</span>";
-			html += "<span onclick='$(\"#"+formId+"\").find(\"input[name=pageIndex]\").val(\""+(page-1)+"\");"+fromIdSubmit+"' class=\"fenye5\">&nbsp;</span>";
+		Integer maxPage = (maxLine + limitCount - 1) / limitCount;
+		String fromIdSubmit = "$(\"#" + formId + "\").submit();";
+
+		if (page != null && page > 1) {
+			html += "<span onclick='$(\"#" + formId + "\").find(\"input[name=pageIndex]\").val(\"1\");" + fromIdSubmit
+					+ "' class=\"fenye1\">首页</span>";
+			html += "<span onclick='$(\"#" + formId + "\").find(\"input[name=pageIndex]\").val(\"" + (page - 1)
+					+ "\");" + fromIdSubmit + "' class=\"fenye5\">&nbsp;</span>";
 		}
-		for(int i = 0 ; i < maxPage ; i ++ ){
-			if((i+1)==page){
-				html +="<span class=\"fenye2_hover\">"+(i+1)+"</span>";
-			}else if((i+omission+1)==page||(i-omission+1)==page){
-				html += "<span onclick='$(\"#"+formId+"\").find(\"input[name=pageIndex]\").val(\""+(i+1)+"\");"+fromIdSubmit+"' class=\"fenye2\">...</span>";
-			}else if(page!=null&&(page-omission-1)<i&&(page+omission-1)>i){
-				html += "<span onclick='$(\"#"+formId+"\").find(\"input[name=pageIndex]\").val(\""+(i+1)+"\");"+fromIdSubmit+"' class=\"fenye2\">"+(i+1)+"</span>";
+		for (int i = 0; i < maxPage; i++) {
+			if ((i + 1) == page) {
+				html += "<span class=\"fenye2_hover\">" + (i + 1) + "</span>";
+			} else if ((i + omission + 1) == page || (i - omission + 1) == page) {
+				html += "<span onclick='$(\"#" + formId + "\").find(\"input[name=pageIndex]\").val(\"" + (i + 1)
+						+ "\");" + fromIdSubmit + "' class=\"fenye2\">...</span>";
+			} else if (page != null && (page - omission - 1) < i && (page + omission - 1) > i) {
+				html += "<span onclick='$(\"#" + formId + "\").find(\"input[name=pageIndex]\").val(\"" + (i + 1)
+						+ "\");" + fromIdSubmit + "' class=\"fenye2\">" + (i + 1) + "</span>";
 			}
 		}
-		if(page==null || page < maxPage){
-			html += "<span onclick='$(\"#"+formId+"\").find(\"input[name=pageIndex]\").val(\""+(page+1)+"\");"+fromIdSubmit+"' class=\"fenye4\">&nbsp;</span>";
-			html += "<span onclick='$(\"#"+formId+"\").find(\"input[name=pageIndex]\").val(\""+maxPage+"\");"+fromIdSubmit+"' class=\"fenye1\">尾页</span>";
+		if (page == null || page < maxPage) {
+			html += "<span onclick='$(\"#" + formId + "\").find(\"input[name=pageIndex]\").val(\"" + (page + 1)
+					+ "\");" + fromIdSubmit + "' class=\"fenye4\">&nbsp;</span>";
+			html += "<span onclick='$(\"#" + formId + "\").find(\"input[name=pageIndex]\").val(\"" + maxPage + "\");"
+					+ fromIdSubmit + "' class=\"fenye1\">尾页</span>";
 		}
-		
-		html +="　共"+maxPage+"页　"+maxLine+"条";
-		html +="<input type=\"hidden\" id=\"pageInput\" name=\"pageIndex\" value=\"1\" />";
+
+		html += "　共" + maxPage + "页　" + maxLine + "条";
+		html += "<input type=\"hidden\" id=\"pageInput\" name=\"pageIndex\" value=\"1\" />";
 		return html;
 	}
+
 	/**
 	 * 根据用户名查询用户信息
 	 * @return 显示用户信息的页面
@@ -1310,154 +1305,206 @@ public class CommonUtil {
 	 *  
 	 */
 	public static JSONObject findUserMessage(String useName) throws IOException {
-	
-			JSONObject jsonValue = null;
-			
-			//得到新接口按手机号码查询用户信息的地址
-			String re = JSONReslutUtil.getResultMessage(ResourceBundleUtil.LINKURL+"/tuserinfoes","json&find=ByUserName&userName="+useName,"POST");
-			JSONObject obj=JSONObject.fromObject(re);
-			logger.info("新接口的返回码："+CommonUtil.getBackValue("errorCode", obj));
-			if(obj!=null){
-				
-				jsonValue  =  JSONObject.fromObject(CommonUtil.getBackValue("value", obj));
-				logger.info("得到用户信息是:"+jsonValue);
-			}
-		   return jsonValue;
-		
+
+		JSONObject jsonValue = null;
+
+		//得到新接口按手机号码查询用户信息的地址
+		String re = JSONReslutUtil.getResultMessage(ResourceBundleUtil.LINKURL + "/tuserinfoes",
+				"json&find=ByUserName&userName=" + useName, "POST");
+		JSONObject obj = JSONObject.fromObject(re);
+		logger.info("新接口的返回码：" + CommonUtil.getBackValue("errorCode", obj));
+		if (obj != null) {
+
+			jsonValue = JSONObject.fromObject(CommonUtil.getBackValue("value", obj));
+			logger.info("得到用户信息是:" + jsonValue);
+		}
+		return jsonValue;
+
 	}
-	
-	
-	
-	public static String getTransactionyTypeMsg (Integer transactionyType){
+
+	public static String getTransactionyTypeMsg(Integer transactionyType) {
 		String str = "";
 		switch (transactionyType) {
 		case 1:
-			str = "投注";break;
+			str = "投注";
+			break;
 		case 2:
-			str = "银行卡充值";break;
+			str = "银行卡充值";
+			break;
 		case 3:
-			str = "平台卡充值";break;
+			str = "平台卡充值";
+			break;
 		case 4:
-			str = "结算";break;
+			str = "结算";
+			break;
 		case 5:
-			str = "提现";break;
+			str = "提现";
+			break;
 		case 6:
-			str = "兑奖结算";break;
+			str = "兑奖结算";
+			break;
 		case 7:
-			str = "退款";break;
+			str = "退款";
+			break;
 		case 8:
-			str = "追号套餐";break;
+			str = "追号套餐";
+			break;
 		case 9:
-			str = "大客户充值";break;
+			str = "大客户充值";
+			break;
 		case 10:
-			str = "点卡充值";break;
+			str = "点卡充值";
+			break;
 		case 11:
-			str = "调账";break;
+			str = "调账";
+			break;
 		case 12:
-			str = "第一次充值赠送彩金 ";break;
+			str = "第一次充值赠送彩金 ";
+			break;
 		case 13:
-			str = "活动充值赠送彩金";break;
+			str = "活动充值赠送彩金";
+			break;
 		case 14:
-			str = "用户注册赠送彩金";break;
+			str = "用户注册赠送彩金";
+			break;
 		case 15:
-			str = "合买";break;
+			str = "合买";
+			break;
 		case 16:
-			str = "合买金额解冻";break;
+			str = "合买金额解冻";
+			break;
 		case 17:
-			str = "合买金额返款";break;
+			str = "合买金额返款";
+			break;
 		case 18:
-			str = "合买中奖结算";break;
-		case 20 :
-			str = "追号定制金额冻结";break;
+			str = "合买中奖结算";
+			break;
+		case 20:
+			str = "追号定制金额冻结";
+			break;
 		case 23:
-			str = "赠送彩金";break;
+			str = "赠送彩金";
+			break;
 		case 24:
-			str = "翼支付撤销扣款";break;
+			str = "翼支付撤销扣款";
+			break;
 		case 25:
-			str = "话费定制";break;
+			str = "话费定制";
+			break;
 		case 26:
-			str = "奖金转账";break;
+			str = "奖金转账";
+			break;
 		case 27:
-			str = "中金提现扣款";break;
+			str = "中金提现扣款";
+			break;
 		default:
-			str = "其他";break;
+			str = "其他";
+			break;
 		}
 		return str;
 	}
+
 	/**
 	 * 根据交易类型显示+或-
 	 */
-	public static String getTypeByMsg (Integer  transactionyType,String memo){
+	public static String getTypeByMsg(Integer transactionyType, String memo) {
 		String str = "";
 		switch (transactionyType) {
 		case 1:
-			str = "-";break;
+			str = "-";
+			break;
 		case 2:
-			str = "+";break;
+			str = "+";
+			break;
 		case 3:
-			str = "+";break;
+			str = "+";
+			break;
 		case 4:
-			str = "+";break;
+			str = "+";
+			break;
 		case 5:
-			str = "-";break;
+			str = "-";
+			break;
 		case 6:
-			str = "+";break;
+			str = "+";
+			break;
 		case 7:
-			str = "+";break;
+			str = "+";
+			break;
 		case 8:
-			if(memo.indexOf("取消追号")>-1){
-				str = "+";break;
-			}else{
-			str = "-";break;
+			if (memo.indexOf("取消追号") > -1) {
+				str = "+";
+				break;
+			} else {
+				str = "-";
+				break;
 			}
 		case 9:
-			str = "+";break;
+			str = "+";
+			break;
 		case 10:
-			str = "+";break;
+			str = "+";
+			break;
 		case 11:
-			str = "";break;
+			str = "";
+			break;
 		case 12:
-			str = "+ ";break;
+			str = "+ ";
+			break;
 		case 13:
-			str = "+";break;
+			str = "+";
+			break;
 		case 14:
-			str = "+";break;
+			str = "+";
+			break;
 		case 15:
-			if(memo.indexOf("撤单")>-1||memo.indexOf("撤资")>-1||memo.indexOf("返奖")>-1||memo.indexOf("佣金")>-1||memo.indexOf("解冻")>-1){
-				str = "+";break;
-			}else{
-			str = "-";break;
+			if (memo.indexOf("撤单") > -1 || memo.indexOf("撤资") > -1 || memo.indexOf("返奖") > -1
+					|| memo.indexOf("佣金") > -1 || memo.indexOf("解冻") > -1) {
+				str = "+";
+				break;
+			} else {
+				str = "-";
+				break;
 			}
 		case 16:
-			str = "+";break;
+			str = "+";
+			break;
 		case 17:
-			str = "+";break;
+			str = "+";
+			break;
 		case 18:
-			str = "+";break;
-		case 20 :
-			str = "-";break;
+			str = "+";
+			break;
+		case 20:
+			str = "-";
+			break;
 		case 23:
-			str = "+";break;
+			str = "+";
+			break;
 		case 24:
-			str = "-";break;
-		case 25 :
-			str = "-";break;
+			str = "-";
+			break;
+		case 25:
+			str = "-";
+			break;
 		case 26:
-			str = "-";break;
+			str = "-";
+			break;
 		case 27:
-			str = "-";break;
+			str = "-";
+			break;
 		default:
-			str = "";break;
+			str = "";
+			break;
 		}
-		if(memo.indexOf("退款")>-1||memo.indexOf("活动赠送")>-1||memo.indexOf("合买发单返奖")>-1){
+		if (memo.indexOf("退款") > -1 || memo.indexOf("活动赠送") > -1 || memo.indexOf("合买发单返奖") > -1) {
 			str = "+";
 		}
-		if(memo.indexOf("手续费")>-1){
+		if (memo.indexOf("手续费") > -1) {
 			str = "-";
 		}
 		return str;
 	}
-	
 
 	/**
 	 * 
@@ -1466,28 +1513,28 @@ public class CommonUtil {
 	 * @return 订阅了返回true,没有订阅返回false;
 	 * @throws Exception
 	 */
-	public static JSONObject getSoufuTransaction(String userno) throws Exception{
-		
+	public static JSONObject getSoufuTransaction(String userno) throws Exception {
+
 		//调用接口查询是否有订阅6元套餐信息
 		String re = JSONReslutUtil.getResultMessage(ResourceBundleUtil.LINKURL
-				+"/tsoufu?find=sofuTransactions&json&userno="+userno);
-		logger.info("根据userno调用查询订阅6元套餐接口返回re="+re);
-		
+				+ "/tsoufu?find=sofuTransactions&json&userno=" + userno);
+		logger.info("根据userno调用查询订阅6元套餐接口返回re=" + re);
+
 		JSONObject objValue = null;
-		
+
 		//得到transaction
 		JSONObject obj = JSONObject.fromObject(re);
 		String error_code = CommonUtil.getBackValue("errorCode", obj);
-		if(error_code.equals(LotErrorCode.NEW_OK)){
+		if (error_code.equals(LotErrorCode.NEW_OK)) {
 			//判断是否有transaction返回
 			JSONArray array = JSONArray.fromObject(CommonUtil.getBackValue("value", obj));
-			if(array.size() > 0){
+			if (array.size() > 0) {
 				objValue = array.getJSONObject(0);
 			}
 		}
 		return objValue;
 	}
-	
+
 	/**
 	 * 
 	 * 创建新的transaction订单号
@@ -1495,73 +1542,70 @@ public class CommonUtil {
 	 * @return 
 	 * @throws Exception 
 	 */
-	public static String getCustomSetMeal(String userno,String transAmt) throws Exception{
+	public static String getCustomSetMeal(String userno, String transAmt) throws Exception {
 
 		//调用接口查询返回订单号
-	 	String re = JSONReslutUtil.getResultMessage(ResourceBundleUtil.LINKURL+"/tsoufu/chargeSoufu?", 
-	 			"userno="+userno+"&transAmt="+transAmt, "POST");
-	 	String id = "";
+		String re = JSONReslutUtil.getResultMessage(ResourceBundleUtil.LINKURL + "/tsoufu/chargeSoufu?", "userno="
+				+ userno + "&transAmt=" + transAmt, "POST");
+		String id = "";
 
-	 	JSONObject obj = JSONObject.fromObject(re);
-	 	//判断返回码得到transactionid
-	 	if(CommonUtil.getBackValue("errorCode", obj).equals(LotErrorCode.NEW_OK)){
-	 		JSONObject jsonValue = JSONObject.fromObject(CommonUtil.getBackValue("value", obj));
-	 		id=CommonUtil.getBackValue("id", jsonValue);
-	 	}
-	 	return id;
+		JSONObject obj = JSONObject.fromObject(re);
+		//判断返回码得到transactionid
+		if (CommonUtil.getBackValue("errorCode", obj).equals(LotErrorCode.NEW_OK)) {
+			JSONObject jsonValue = JSONObject.fromObject(CommonUtil.getBackValue("value", obj));
+			id = CommonUtil.getBackValue("id", jsonValue);
+		}
+		return id;
 	}
-	
+
 	/**
 	 * 编码转换
 	 * @param args
 	 * @throws Exception
 	 */
-	public  static String switchCode(String argument ){
+	public static String switchCode(String argument) {
 		String arg = "";
 		try {
-			arg= URLDecoder.decode(argument.trim(), "utf-8");
+			arg = URLDecoder.decode(argument.trim(), "utf-8");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		
+
 		return arg;
 	}
-	
-	
+
 	/**
 	 * 查询账户余额
 	 * @param userno 用户编号
 	 * @return
 	 * @throws Exception
 	 */
-	public static  JSONObject getBalance(String userno)throws Exception {
+	public static JSONObject getBalance(String userno) throws Exception {
 		return JSONObject.fromObject(
-				JSONReslutUtil.getResultMessage(
-					ResourceBundleUtil.LINKURL + "/select/getAccount?","userno="+userno,"POST"))
-					.getJSONObject("value");
+				JSONReslutUtil.getResultMessage(ResourceBundleUtil.LINKURL + "/select/getAccount?", "userno=" + userno,
+						"POST")).getJSONObject("value");
 	}
-	
-	
-//	/**
-//	 * 查询期号
-//	 * @param lotNo 彩种
-//	 * @return
-//	 * @throws Exception 
-//	 */
-//	public String getTerm(String lotNo) throws Exception {
-//		//查询的条件
-//		JSONObject where=new JSONObject();
-//		where.put("lotNo", lotNo);
-//		
-//		//调用查询期号的接口得到期号
-//		JSONObject getLotNo=JSonResultService.getAllJSonReuslt(where, null,null, 0, "touzhu.do", "getLotNo");
-//		String rtnLotNo=getLotNo.getString("value");
-//		JSONObject js=JSONObject.fromObject(rtnLotNo);
-//		//得到期号并返回
-//		String term=CommonUtil.getBackValue("batchCode", js);
-//		return term;
-//	}
-	
+
+	//	/**
+	//	 * 查询期号
+	//	 * @param lotNo 彩种
+	//	 * @return
+	//	 * @throws Exception 
+	//	 */
+	//	public String getTerm(String lotNo) throws Exception {
+	//		//查询的条件
+	//		JSONObject where=new JSONObject();
+	//		where.put("lotNo", lotNo);
+	//		
+	//		//调用查询期号的接口得到期号
+	//		JSONObject getLotNo=JSonResultService.getAllJSonReuslt(where, null,null, 0, "touzhu.do", "getLotNo");
+	//		String rtnLotNo=getLotNo.getString("value");
+	//		JSONObject js=JSONObject.fromObject(rtnLotNo);
+	//		//得到期号并返回
+	//		String term=CommonUtil.getBackValue("batchCode", js);
+	//		return term;
+	//	}
+
 	/**
 	 * 
 	 * 提取查询的开始时间
@@ -1569,177 +1613,180 @@ public class CommonUtil {
 	 * @return 并返回开始时间 startDate
 	 * @throws ParseException
 	 */
-	public static String getStartDate(String startDate) throws ParseException{
-		DateFormat df = new SimpleDateFormat("yyyyMMdd"); 
+	public static String getStartDate(String startDate) throws ParseException {
+		DateFormat df = new SimpleDateFormat("yyyyMMdd");
 		DateFormat dfs = new SimpleDateFormat("yyyy-MM-dd");
-		if(startDate==null || startDate.equals("") || startDate == "undefined"){//默认查询7天的账户明细
-			startDate = dfs.format(new Long(new Date().getTime()/1000-(60*60*24*7))*1000);
-			
-		}else{
+		if (startDate == null || startDate.equals("") || startDate == "undefined") {//默认查询7天的账户明细
+			startDate = dfs.format(new Long(new Date().getTime() / 1000 - (60 * 60 * 24 * 7)) * 1000);
+
+		} else {
 			//若时间超过三个月让其开始时间为当前三个月的
-/*			if(startDate.indexOf("-") > -1){
-				startDate = startDate.replace("-","");
-			}*/
-			if((df.parse(startDate.replace("-","")).getTime())/1000 <= (new Date().getTime()/1000 - 60*60*24*90)){
-				startDate = dfs.format(new Long(new Date().getTime()/1000-(60*60*24*89))*1000);
+			/*			if(startDate.indexOf("-") > -1){
+							startDate = startDate.replace("-","");
+						}*/
+			if ((df.parse(startDate.replace("-", "")).getTime()) / 1000 <= (new Date().getTime() / 1000 - 60 * 60 * 24 * 90)) {
+				startDate = dfs.format(new Long(new Date().getTime() / 1000 - (60 * 60 * 24 * 89)) * 1000);
 			}
-			
+
 		}
 		return startDate;
-		
+
 	}
-	
-	
-	public static String getLotnoCn(String lotno){
+
+	public static String getLotnoCn(String lotno) {
 		String lotno_cn = "";
-		if("F47104".equals(lotno)){
+		if ("F47104".equals(lotno)) {
 			lotno_cn = "双色球";
-		}else if("F47103".equals(lotno)){
+		} else if ("F47103".equals(lotno)) {
 			lotno_cn = "福彩3D";
-		}else if("F47102".equals(lotno)){
+		} else if ("F47102".equals(lotno)) {
 			lotno_cn = "七乐彩";
-		}else if("T01001".equals(lotno)){
+		} else if ("T01001".equals(lotno)) {
 			lotno_cn = "大乐透";
-		}else if("T01002".equals(lotno)){
+		} else if ("T01002".equals(lotno)) {
 			lotno_cn = "排列三";
-		}else if("T01011".equals(lotno)){
+		} else if ("T01011".equals(lotno)) {
 			lotno_cn = "排列五";
-		}else if("T01009".equals(lotno)){
+		} else if ("T01009".equals(lotno)) {
 			lotno_cn = "七星彩";
 		}
-		return lotno_cn; 
+		return lotno_cn;
 	}
+
 	/***
 	 * 金额保留两位小数
 	 * @return
 	 */
-	public static String moneySave2(double str){
-		DecimalFormat       dfs      =       new       DecimalFormat( "#####0.00 "); 
-		return  dfs.format(str);
-		
+	public static String moneySave2(double str) {
+		DecimalFormat dfs = new DecimalFormat("#####0.00 ");
+		return dfs.format(str);
+
 	}
-	public static String getTitle(String lotno){
+
+	public static String getTitle(String lotno) {
 		String lotno_cn = "";
-		if("F47104".equals(lotno)){
+		if ("F47104".equals(lotno)) {
 			lotno_cn = "-双色球合买";
-		}else if("F47103".equals(lotno)){
+		} else if ("F47103".equals(lotno)) {
 			lotno_cn = "-福彩3D合买";
-		}else if("F47102".equals(lotno)){
+		} else if ("F47102".equals(lotno)) {
 			lotno_cn = "-七乐彩合买";
-		}else if("T01001".equals(lotno)){
+		} else if ("T01001".equals(lotno)) {
 			lotno_cn = "-大乐透合买";
-		}else if("T01002".equals(lotno)){
+		} else if ("T01002".equals(lotno)) {
 			lotno_cn = "-排列三合买";
-		}else if("T01011".equals(lotno)){
+		} else if ("T01011".equals(lotno)) {
 			lotno_cn = "-排列五合买";
-		}else if("T01009".equals(lotno)){
+		} else if ("T01009".equals(lotno)) {
 			lotno_cn = "-七星彩合买";
-		}else if("T01005".equals(lotno)){
+		} else if ("T01005".equals(lotno)) {
 			lotno_cn = "-四场进球合买";
-		}else if("T01003".equals(lotno)){
+		} else if ("T01003".equals(lotno)) {
 			lotno_cn = "-胜负彩合买";
-		}else if("T01004".equals(lotno)){
+		} else if ("T01004".equals(lotno)) {
 			lotno_cn = "-任九场合买";
-		}else if("T01006".equals(lotno)){
+		} else if ("T01006".equals(lotno)) {
 			lotno_cn = "-六场半合买";
 		}
-		return lotno_cn; 
+		return lotno_cn;
 	}
+
 	//开奖详情页面的seo使用
-	public static String getTitle_kaijiang(String lotno){
+	public static String getTitle_kaijiang(String lotno) {
 		//格式：标题&关键字&描述
 		String messg = "";
-		if("F47104".equals(lotno)){
+		if ("F47104".equals(lotno)) {
 			messg = "双色球";
-		}else if("F47103".equals(lotno)){
+		} else if ("F47103".equals(lotno)) {
 			messg = "福彩3D";
-		}else if("F47102".equals(lotno)){
+		} else if ("F47102".equals(lotno)) {
 			messg = "七乐彩";
-		}else if("T01001".equals(lotno)){
+		} else if ("T01001".equals(lotno)) {
 			messg = "大乐透";
-		}else if("T01002".equals(lotno)){
+		} else if ("T01002".equals(lotno)) {
 			messg = "排列三";
-		}else if("T01011".equals(lotno)){
+		} else if ("T01011".equals(lotno)) {
 			messg = "排列五";
-		}else if("T01009".equals(lotno)){
+		} else if ("T01009".equals(lotno)) {
 			messg = "七星彩";
-		}else if("T01010".equals(lotno)){//十一选五
+		} else if ("T01010".equals(lotno)) {//十一选五
 			messg = "11选5";
-		}else if("T01012".equals(lotno)){//十一运夺金
+		} else if ("T01012".equals(lotno)) {//十一运夺金
 			messg = "十一运夺金";
-		}else if("T01007".equals(lotno)){//时时彩
+		} else if ("T01007".equals(lotno)) {//时时彩
 			messg = "时时彩";
 		}
-	return messg; 
+		return messg;
 	}
-	
+
 	/**
 	 * users项目中调用loginforuserno的公共方法
 	 */
 	/**
 	 *  用户通注册时，使用userno 进行USERCENTER的登记注册
-	 *  POST 方式提交请求 http://users.ruyicai.com/user/center!loginForUserno   参数为userno
+	 *  POST 方式提交请求 http://users.boyacai.com/user/center!loginForUserno   参数为userno
 	 *  @return JsonObj
 	 */
-	public static JSONObject loginForUserno(String userno , HttpServletRequest request,HttpServletResponse response){
+	public static JSONObject loginForUserno(String userno, HttpServletRequest request, HttpServletResponse response) {
 		JSONObject reJsonObj = new JSONObject();
 		try {
-				if(userno.isEmpty()){//如果userno为空，则返回501
-					reJsonObj.put("errorCode", "501");
-					return reJsonObj;
-				}
-				//获取用户在库中的数据 并保存到session memCache 和cookie
-				String userInfoStr = JSONObject.fromObject(
-						JSONReslutUtil.getResultMessage(USER_LINKURL + 
-								"/tuserinfoes?","json&find=ByUserno&userno="+userno,"POST"))
-								.getJSONObject("value").toString();
-				request.getSession().setAttribute("userno", userno);
-				try{
-					MemCacheInvoke.mcc.set("Tuserinfo_"+userno, userInfoStr, (24*3600));
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				pageCookie(request.getSession(true).getId(),request,response);
-				reJsonObj.put("errorCode", "0");
-				reJsonObj.put("jsessionid", request.getSession(true).getId());
+			if (userno.isEmpty()) {//如果userno为空，则返回501
+				reJsonObj.put("errorCode", "501");
 				return reJsonObj;
+			}
+			//获取用户在库中的数据 并保存到session memCache 和cookie
+			String userInfoStr = JSONObject
+					.fromObject(
+							JSONReslutUtil.getResultMessage(ResourceBundleUtil.LINKURL + "/tuserinfoes?",
+									"json&find=ByUserno&userno=" + userno, "POST")).getJSONObject("value").toString();
+			request.getSession().setAttribute("userno", userno);
+			try {
+				MemCacheInvoke.mcc.set("Tuserinfo_" + userno, userInfoStr, (24 * 3600));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			pageCookie(request.getSession(true).getId(), request, response);
+			reJsonObj.put("errorCode", "0");
+			reJsonObj.put("jsessionid", request.getSession(true).getId());
+			return reJsonObj;
 		} catch (IOException e) {
 			e.printStackTrace();
 			reJsonObj.put("errorCode", "500");
 			return reJsonObj;
 		}
 	}
-	
-	
+
 	/**
 	 * 通过http请求可以获得当前用户的登录信息 只能获得user详情
 	 * 参数jsessionid=｛cookie中存储的值｝、a=随机数
 	 * @param 返回值为JSONObject对象{errorCode:"0",value:{用户对象}} 如果失败则返回100002 或者500
 	 */
-	public static JSONObject getUserInfo(HttpSession session){
+	public static JSONObject getUserInfo(HttpSession session) {
 		JSONObject reJsonObj = new JSONObject();
 		try {
-			if(session.getAttribute("userno")!=null){//判断session中是否存在当前用户的对象
+			if (session.getAttribute("userno") != null) {//判断session中是否存在当前用户的对象
 				reJsonObj.put("errorCode", "0");
-				Object userInfoObj = MemCacheInvoke.mcc.get("Tuserinfo_"+session.getAttribute(
-						"userno").toString());
+				Object userInfoObj = MemCacheInvoke.mcc.get("Tuserinfo_" + session.getAttribute("userno").toString());
 				String userInfoStr = "";
-				if(userInfoObj!=null){
+				if (userInfoObj != null) {
 					userInfoStr = userInfoObj.toString();//从系统缓存中获取用户信息 
-				}else{
-					userInfoStr = JSONObject.fromObject(
-								JSONReslutUtil.getResultMessage(USER_LINKURL + 
-										"/tuserinfoes?json&find=ByUserno&userno="+session.getAttribute("userno").toString()))
-										.getJSONObject("value").toString();
-					try{
-						MemCacheInvoke.mcc.add("Tuserinfo_"+session.getAttribute("userno").toString(), userInfoStr, (24*3600));
+				} else {
+					userInfoStr = JSONObject
+							.fromObject(
+									JSONReslutUtil.getResultMessage(ResourceBundleUtil.LINKURL
+											+ "/tuserinfoes?json&find=ByUserno&userno="
+											+ session.getAttribute("userno").toString())).getJSONObject("value")
+							.toString();
+					try {
+						MemCacheInvoke.mcc.add("Tuserinfo_" + session.getAttribute("userno").toString(), userInfoStr,
+								(24 * 3600));
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
 				}
 				reJsonObj.put("value", JSONObject.fromObject(userInfoStr));
 				return reJsonObj;
-			}else{//如果不存在则返回100002告知用户不存在并需要登录
+			} else {//如果不存在则返回100002告知用户不存在并需要登录
 				reJsonObj.put("errorCode", ErrorCode.UserMod_UserNotExists.value);
 				reJsonObj.put("value", "{}");
 				return reJsonObj;
@@ -1750,23 +1797,23 @@ public class CommonUtil {
 			return reJsonObj;
 		}
 	}
-	
-	
+
 	/**
 	 * 通过http请求可以修改当前用户的信息
-	 * 例子：http://users.ruyicai.com/user/center!editUserInfo;jsessionid=｛cookie中存储的值｝?a=随机数
-	 * http://users.ruyicai.com/user/center!getUserCookie;jsessionid=D051904206F696879C5C507444217FFD?a=3493537239827349
+	 * 例子：http://users.boyacai.com/user/center!editUserInfo;jsessionid=｛cookie中存储的值｝?a=随机数
+	 * http://users.boyacai.com/user/center!getUserCookie;jsessionid=D051904206F696879C5C507444217FFD?a=3493537239827349
 	 * @param 返回值为JSONObject对象{errorCode:"0",value:{用户对象}} 如果失败则返回100002 或者500
 	 */
-	public static JSONObject editUserInfo(HttpServletRequest request,JSONObject user){
-		String JsonUserInfo = request.getParameter("userinfo")==null?"":request.getParameter("userinfo");
+	public static JSONObject editUserInfo(HttpServletRequest request, JSONObject user) {
+		String JsonUserInfo = request.getParameter("userinfo") == null ? "" : request.getParameter("userinfo");
 		JSONObject reJsonObj = null;
-		if(!JsonUserInfo.isEmpty()){
+		if (!JsonUserInfo.isEmpty()) {
 			try {
 				reJsonObj = JSONObject.fromObject(JsonUserInfo);
 				//将查到呃用户信息存入缓存
-				try{
-					MemCacheInvoke.mcc.set("Tuserinfo_"+reJsonObj.getString("userno"), reJsonObj.toString(), (24*3600));
+				try {
+					MemCacheInvoke.mcc.set("Tuserinfo_" + reJsonObj.getString("userno"), reJsonObj.toString(),
+							(24 * 3600));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -1783,13 +1830,13 @@ public class CommonUtil {
 		reJsonObj.put("value", "{}");
 		return reJsonObj;
 	}
-	
+
 	/**
 	 * 发送手机号码的验证码
 	 * @param request 生成验证码存入session中
 	 * @return
 	 */
-	public static String getRandYZM(){
+	public static String getRandYZM() {
 		//生成随机类
 		Random random = new Random();
 		// 取随机产生的认证码(4位数字)
@@ -1800,17 +1847,17 @@ public class CommonUtil {
 		}
 		return sRand;
 	}
-	
+
 	/**
 	 * 给用户创建一个cookie 如果cookie存在，则修改当前cookie
 	 * cookie中存储当前用户的jsessionid 
 	 * @param sessionId
 	 */
-	public static void pageCookie(String sessionId,HttpServletRequest request,HttpServletResponse response){
+	public static void pageCookie(String sessionId, HttpServletRequest request, HttpServletResponse response) {
 		String cookieName = "userInfoId";
 		Cookie userCookie = new Cookie(cookieName, sessionId);
 		userCookie.setPath("/");
-		userCookie.setDomain(COOKIES_DOMAIN);
+		userCookie.setDomain(ResourceBundleUtil.COOKIES_DOMAIN);
 		userCookie.setMaxAge(-1);
 		response.addCookie(userCookie);
 	}
