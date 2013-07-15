@@ -11,9 +11,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>如意彩会员登录，您可以使用QQ、支付宝快捷登陆</title>
+<title>博雅彩会员登录，您可以使用QQ、支付宝快捷登陆</title>
 <meta http-equiv="keywords" content="会员登录，QQ、支付宝快捷登陆"/>
-<meta http-equiv="description" content="如意彩会员快捷登录使用QQ、支付宝登陆让您购彩更快捷！"/>
+<meta http-equiv="description" content="博雅彩会员快捷登录使用QQ、支付宝登陆让您购彩更快捷！"/>
 <link type="text/css" href="http://www.ruyicai.com/css/util.css" rel="stylesheet"/>
 <link type="text/css" href="http://www.ruyicai.com/css/ruserAll.css" rel="stylesheet"/>
 <script type="text/javascript" src="<%=basePath%>/js/jqueryJS/jquery-1.5.min.js" ></script>
@@ -61,18 +61,18 @@ function change(mag){
 		</div>
 		</form>
 		<div class="user_loginRight">
-			<h2>还不是如意彩用户？</h2>
-			<p>现在免费注册成为如意彩用户，便能立刻享受便捷的购彩服务。</p>
+			<h2>还不是博雅彩用户？</h2>
+			<p>现在免费注册成为博雅彩用户，便能立刻享受便捷的购彩服务。</p>
 			<div class="login_footerLine"><a href="/register/register_new.jsp" class="login_registration">注册新用户</a></div>
 			<div class="space15">&#160;</div>
-			<p>使用合作网站账号登录如意彩：</p>
+			<p>使用合作网站账号登录博雅彩：</p>
 			<p><a href="http://www.ruyicai.com/chlw/function/unitedLogin!qqUnitedHandlyLogin" title="QQ" class="login_QQ">QQ</a><a href="http://www.ruyicai.com/chlw/function/unitedLogin!alipayHandyLogin" title="支付宝" class="login_zhiFuBao">支付宝</a></p>
 		</div>
 	</div>
 	<div id="footer">
-		<div class="copyright">Copyright© 2009-2014如意彩彩票网 All rights reserved  增值电信业务经营许可证（B2-20100007）　京ICP备10007936号</div>
+		<div class="copyright">Copyright© 2009-2014博雅彩彩票网 All rights reserved  增值电信业务经营许可证（B2-20100007）　京ICP备10007936号</div>
 	    <div class="lianxi">客服热线：400-665-1000　 客服邮箱：<a href="mailto:service@ruyicai.com">service@ruyicai.com</a></div>
-		<div class="lianxi">如意彩温馨提示：彩票乃公益事业，投注请量力而行，不向未满18周岁的青少年出售彩票！</div>
+		<div class="lianxi">博雅彩温馨提示：彩票乃公益事业，投注请量力而行，不向未满18周岁的青少年出售彩票！</div>
 	</div>
 </div>
 </div>

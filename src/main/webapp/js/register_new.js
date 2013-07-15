@@ -88,7 +88,7 @@ function Length(str) {
   	return false;
   }
 
-  //如意彩点卡密码验证
+  //博雅彩点卡密码验证
   function checkCardPwd(){
   	var cardpwd = $("#card_pwd").val();
   	if(cardpwd.trim()==""){
@@ -445,7 +445,7 @@ function passStrength(){
 function register_91(){
 	
 	if ($("#registerXieyi").attr("checked")!=true) {
-		openAlert('您没有同意《如意彩服务协议》！');
+		openAlert('您没有同意《博雅彩服务协议》！');
 		return;
 	}
 	notRepeat('phoneregister_submit','ZhuCe_btnhover','提交中'); 
@@ -489,7 +489,7 @@ function register_91(){
 	function register(){
 	
 		if ($("#registerXieyi").attr("checked")!=true) {
-			openAlert('您没有同意《如意彩服务协议》！');
+			openAlert('您没有同意《博雅彩服务协议》！');
 			return;
 		}
 		notRepeat('phoneregister_submit','ZhuCe_btnhover','提交中'); 

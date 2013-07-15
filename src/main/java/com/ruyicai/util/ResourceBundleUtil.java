@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 
 /**
  * 
- * 读取如意彩配置文件
+ * 读取博雅彩配置文件
  * 
 */
 public class ResourceBundleUtil {
@@ -16,7 +16,7 @@ public class ResourceBundleUtil {
 	public static final String LINKURL = rbint.getString("linkURL");
 	//新的链接地址
 	public static final String COOKIES_DOMAIN = rbint.getString("cookiesDomain");
-	//如意彩注册手机发送短信内容
+	//博雅彩注册手机发送短信内容
 	public static final String RYC_PHONEBANDSENDMSG = rbint.getString("ryc_phonebandsendMsg");
 	//设置开关短信地址
 	public static String LINKSMGURL = rbint.getString("linkSMGUrl");

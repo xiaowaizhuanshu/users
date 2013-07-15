@@ -241,7 +241,7 @@
 				<linkURL>http://192.168.15.15:8888/lottery</linkURL>
 				<!-- 代理用户 -->
 				<agencyUrl>http://192.168.15.15:9988/agencycenter</agencyUrl>
-				<!-- 如意彩点卡充值 -->
+				<!-- 博雅彩点卡充值 -->
 				<msbankUrl>http://192.168.15.15:9999/ChargeCenter</msbankUrl>
 				<!-- cookie生效范围 -->
 				<cookiesDomain>.test.com</cookiesDomain>

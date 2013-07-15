@@ -133,7 +133,7 @@ public class RegisterAction extends BaseAction {
 						agencyCookie(userid);
 					}
 				}
-				//判断是否输入了如意彩点卡信息
+				//判断是否输入了博雅彩点卡信息
 				if (session.getAttribute("cardpwd") != null) {
 					this.rycCardCharge(user);
 				}
@@ -330,7 +330,7 @@ public class RegisterAction extends BaseAction {
 
 	/**
 	 * 
-	 * 如意彩点卡充值
+	 * 博雅彩点卡充值
 	 * @return  json
 	 * 
 	 */
@@ -338,7 +338,7 @@ public class RegisterAction extends BaseAction {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		try {
-			logger.info("=====如意彩点卡充值开始=====");
+			logger.info("=====博雅彩点卡充值开始=====");
 
 			//从页面得到用户输入的卡号和密码
 			String cardid = (String) session.getAttribute("cardno");
@@ -347,7 +347,7 @@ public class RegisterAction extends BaseAction {
 			// 3.调用jrtLot接口执行查询
 			JSONObject paras = new JSONObject();
 
-			//如意彩点卡充值需要的参数是：userno chargetype cardno cardpwd channel subchannel bankid paytype accesstype agencyno
+			//博雅彩点卡充值需要的参数是：userno chargetype cardno cardpwd channel subchannel bankid paytype accesstype agencyno
 			paras.put("userno", user.getUSERNO());
 			paras.put("cardno", cardid);
 			paras.put("chargetype", "2");
@@ -359,26 +359,26 @@ public class RegisterAction extends BaseAction {
 			paras.put("accesstype", Constant.WEB_AGENCYNO);
 			paras.put("agencyno", "");
 
-			//调用新接口如意彩点卡充值接口
+			//调用新接口博雅彩点卡充值接口
 
-			logger.info("如意彩点卡充值接口地址>>>" + ResourceBundleUtil.MSBANKURL
+			logger.info("博雅彩点卡充值接口地址>>>" + ResourceBundleUtil.MSBANKURL
 					+ "/ruyicaicardcharge!ruyicaiCardCharge?jsonString=" + paras.toString());
 
 			JSONObject obj = JSONObject.fromObject(JSONReslutUtil.getResultMessage(ResourceBundleUtil.MSBANKURL
 					+ "/ruyicaicardcharge!ruyicaiCardCharge?", "jsonString=" + URLEncoder.encode(paras.toString()),
 					"POST"));
 
-			logger.info("如意彩点卡充值接口返回值>>>" + obj);
+			logger.info("博雅彩点卡充值接口返回值>>>" + obj);
 
 			if (obj != null) {
-				logger.info("如意彩点卡充值jrtLot返回(如意彩点卡 recharge jrtLot Back):" + obj.toString());
+				logger.info("博雅彩点卡充值jrtLot返回(博雅彩点卡 recharge jrtLot Back):" + obj.toString());
 				jsonRoot.put("flag", true);
 				jsonRoot.put("jsonValue", obj);
 				response.getWriter().print(jsonRoot.toString());
 			}
 
 		} catch (Exception e) {
-			logger.error("如意彩点卡账户充值异常Exception(Account recharge exception):" + e.toString());
+			logger.error("博雅彩点卡账户充值异常Exception(Account recharge exception):" + e.toString());
 			e.printStackTrace();
 			return "error";
 		}

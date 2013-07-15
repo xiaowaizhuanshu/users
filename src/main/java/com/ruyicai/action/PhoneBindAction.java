@@ -119,7 +119,7 @@ public class PhoneBindAction extends BaseAction {
 	
 	public void phoneBandCheck(){
 		try{
-			logger.info("====如意彩手机绑定验证开始====");
+			logger.info("====博雅彩手机绑定验证开始====");
 			// 1.得到用户信息
 			String sessionid = session.getId();
 			String usermobile=request.getParameter("usermobile");
