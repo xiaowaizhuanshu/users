@@ -151,6 +151,23 @@
 			<version>1.2</version>
 		</dependency>
 
+		<!-- jackson -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-jaxrs</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+		
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -187,6 +204,16 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
 					<warName>users</warName>
+					<webResources>
+				     <resource>
+				       <filtering>true</filtering>
+				       <directory>src/main/webapp</directory>
+				       <includes>
+				         <include>**/*.js</include>
+				         <!-- include any other file types you want to filter -->
+				       </includes>
+				     </resource>
+				   </webResources>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -248,9 +275,7 @@
 				<!-- 短信地址 -->
 				<linkSMGUrl>http://192.168.15.15:7777/msgcenter/</linkSMGUrl>
 				
-				<appAddress>http://test.com:8090</appAddress>
-				<appAddressUser>http://test.com</appAddressUser>
-				<appAddressWap>http://test.com/wap</appAddressWap>
+				<appAddr>{"rchlw":"http://test.com:8090","users":"http://test.com","wap":"http://test.com/wap"}</appAddr>
 				
 				<!-- 后台链接地址 
 				<baseUrl>http\://219.148.162.70\:8000/jrtLot/</baseUrl>-->

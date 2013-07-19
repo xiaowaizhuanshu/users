@@ -11,6 +11,7 @@ import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
+import com.boyacai.common.util.AppAddr;
 import com.ruyicai.action.cooperation.dto_Activity;
 import com.ruyicai.bean.Tuserinfo;
 import com.ruyicai.util.BaseAction;
@@ -146,9 +147,9 @@ public class RegisterAction extends BaseAction {
 					return null;
 				} else {
 					if (sign.equals("91ruyicai")) {
-						response.sendRedirect(ResourceBundleUtil.APP_ADDRESS_USER + "/91login.jsp");
+						response.sendRedirect(AppAddr.getUsersPath() + "/91login.jsp");
 					}
-					response.sendRedirect(ResourceBundleUtil.APP_ADDRESS_USER + "/login.jsp");
+					response.sendRedirect(AppAddr.getUsersPath() + "/login.jsp");
 					return null;
 				}
 			} else if (obj.getString("errorCode").equals(LotErrorCode.YHYZC)) {
@@ -199,7 +200,7 @@ public class RegisterAction extends BaseAction {
 			realname = request.getParameter("realname");
 		}
 		if (isEmpty(reqUrl)) {
-			reqUrl = ResourceBundleUtil.APP_ADDRESS_WAP;
+			reqUrl = AppAddr.getWapPath();
 		}
 		String reResult = VerRegisterParam(username, password, repwd);
 		if (isEmpty(reResult) == false) {
@@ -261,9 +262,9 @@ public class RegisterAction extends BaseAction {
 					return null;
 				} else {
 					if (type.equals("isTouch")) {
-						response.sendRedirect(ResourceBundleUtil.APP_ADDRESS_USER + "/touchwap/login.jsp?reqUrl=http://"+ResourceBundleUtil.APP_ADDRESS+"/wap/index");
+						response.sendRedirect(AppAddr.getUsersPath() + "/touchwap/login.jsp?reqUrl=http://"+AppAddr.getRchlwPath()+"/wap/index");
 					}
-					response.sendRedirect(ResourceBundleUtil.APP_ADDRESS_USER + "/wap/login.jsp?reqUrl=http://"+ResourceBundleUtil.APP_ADDRESS+"/wap/index");
+					response.sendRedirect(AppAddr.getUsersPath() + "/wap/login.jsp?reqUrl=http://"+AppAddr.getRchlwPath()+"/wap/index");
 					return null;
 				}
 			} else if (obj.getString("errorCode").equals(LotErrorCode.YHYZC)) {

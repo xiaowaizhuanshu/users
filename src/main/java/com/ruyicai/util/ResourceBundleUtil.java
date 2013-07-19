@@ -55,11 +55,6 @@ public class ResourceBundleUtil {
 	public static Map<String, String> QQ_APP_ID = ResourceBundleUtil.getPropertiesList("qq_app_id");
 	public static Map<String, String> QQ_APP_KEY = ResourceBundleUtil.getPropertiesList("qq_app_key");
 
-	//各应用模块服务地址
-	public static final String APP_ADDRESS = rbint.getString("appAddress");
-	public static final String APP_ADDRESS_USER = rbint.getString("appAddressUser");
-	public static final String APP_ADDRESS_WAP = rbint.getString("appAddressWap");
-
 	/**
 	 * 返回对应网站所需内容在配置文件获取的方法
 	 * 包括渠道号、Channel、充值返回地址
