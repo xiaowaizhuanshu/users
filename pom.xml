@@ -277,6 +277,7 @@
 				
 				<appAddr>{"rchlw":"http://test.com:8090","users":"http://test.com","wap":"http://test.com/wap"}</appAddr>
 				
+				<qqLoginUrl>test.com-http://test.com/function/unitedLogin!qqUnitedLogin,test.com:8090-http://test.com:8090/rchlw/function/unitedLogin!qqUnitedLogin,91.test.com-http://test.com:8090/rchlw/function/unitedLogin!qqUnitedLogin</qqLoginUrl>
 				<!-- 后台链接地址 
 				<baseUrl>http\://219.148.162.70\:8000/jrtLot/</baseUrl>-->
 				<!-- 积分地址 
