@@ -320,7 +320,7 @@ public class UnitedLoginAction extends BaseAction {
 
 					if (getBigLogin(tuser.getUSERNO(), request)) {
 
-						response.getWriter().print(AppAddr.getRchlwPath() + "/index.html");
+						response.getWriter().print(AppAddr.getRchlwPath());
 						return null;
 					} else {
 						session.setAttribute("message", MessageUtil.TIAW_login_ExceptionMsg);
@@ -376,7 +376,7 @@ public class UnitedLoginAction extends BaseAction {
 					JSONReslutUtil.changeUserInfo(request);
 					response.getWriter().print(
 							"<script language='javascript'>window.location.href='" + AppAddr.getRchlwPath()
-									+ "/index.html'</script>");
+									+ "'</script>");
 				}
 				return null;
 			} else {
@@ -697,7 +697,7 @@ public class UnitedLoginAction extends BaseAction {
 					JSONReslutUtil.changeUserInfo(request);
 					response.getWriter().print(
 							"<script language='javascript'>window.location.href='" + AppAddr.getRchlwPath()
-									+ "/index.html'</script>");
+									+ "'</script>");
 					return null;
 				}
 			} else {

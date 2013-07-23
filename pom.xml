@@ -248,6 +248,17 @@
 					<wtpversion>2.0</wtpversion>
 				</configuration>
 			</plugin>
+			<plugin>  
+	            <groupId>org.codehaus.mojo</groupId>  
+	            <artifactId>tomcat-maven-plugin</artifactId>
+	            <configuration>  
+	                <url>http://localhost:9000/manager/text</url>  
+	                <username>tomcat</username>  
+	                <password>s3cret</password>
+	                <path>/</path>
+	                <warFile>target/users.war</warFile>
+	            </configuration>  
+	       	</plugin>  
 		</plugins>
 	</build>
 	<profiles>
@@ -275,9 +286,15 @@
 				<!-- 短信地址 -->
 				<linkSMGUrl>http://192.168.15.15:7777/msgcenter/</linkSMGUrl>
 				
-				<appAddr>{"rchlw":"http://test.com:8090","users":"http://test.com","wap":"http://test.com/wap"}</appAddr>
+				<!-- 各应用模块访问地址 -->
+				<appAddr>{"rchlw":"http://test.com:8090/rchlw","users":"http://test.com","wap":"http://test.com/wap"}</appAddr>
 				
-				<qqLoginUrl>test.com-http://test.com/function/unitedLogin!qqUnitedLogin,test.com:8090-http://test.com:8090/rchlw/function/unitedLogin!qqUnitedLogin,91.test.com-http://test.com:8090/rchlw/function/unitedLogin!qqUnitedLogin</qqLoginUrl>
+				<!-- QQ联合登陆 开始 -->
+				<qqAppId>test.com-100488720,test.com:8090-100488720</qqAppId>
+				<qqAppKey>test.com-c94f3d29820aa9a1fa71cc2369bfcef9,test.com:8090-c94f3d29820aa9a1fa71cc2369bfcef9</qqAppKey>
+				<qqLoginUrl>test.com-http://test.com/function/unitedLogin!qqUnitedLogin,test.com:8090-http://test.com:8090/rchlw/function/unitedLogin!qqUnitedLogin</qqLoginUrl>
+				<!-- QQ联合登陆 结束 -->
+				
 				<!-- 后台链接地址 
 				<baseUrl>http\://219.148.162.70\:8000/jrtLot/</baseUrl>-->
 				<!-- 积分地址 
