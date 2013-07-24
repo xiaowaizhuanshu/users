@@ -66,58 +66,6 @@ public class dto_Activity {
 				+ ", reward=" + reward + ", type="+ type + "]";
 	}
 	
-	/**
-	 * 第一次绑定手机验证通过后送彩金
-	 * @param userNo 用户编号
-	 * @param isKey 手机号
-	 * @return
-	 */
-	public static void inDataIsFirstRegistrGift(String userNo,String isKey){
-		try {
-			//活动开关 非0为开启
-			if(ResourceBundleUtil.SEND_REGISTER.equals("0")){
-				return;
-			}
-			
-			Long reward = Long.parseLong(ResourceBundleUtil.PRESENTATION_MONEY);//分
-			Integer type = Integer.parseInt(enum_ActivityType.TYPE_FIRST_REGISTR_GIFT_3.value);
-			//调用jrtcms接口 组成json 并获得加密mac 请求jrtcms
-			JSONObject obj = JSONObject.fromObject(dto_Activity.getActivityType(userNo, isKey, reward, type));
-			
-			String md5code = userNo + INTERFACE_KEY;
-			String md5 = PaySign.EncoderByMd5(md5code);
-			
-			if(md5.indexOf("+")>-1){
-				md5 = md5.replaceAll("\\+", "_");
-			}
-			md5 = URLEncoder.encode(md5);
-			
-			JSONObject reObj = JSONObject.fromObject(JSONReslutUtil.getResultMessage(
-					ResourceBundleUtil.SENDURL + "/activity!getActivityByUserNo?",
-					"activity="+obj+"&userno=" + userNo + "&interfaceType=002&Mac=" + md5, "POST"));
-			if(reObj.get("errorCode")!=null
-					&&reObj.getString("errorCode").equals(LotErrorCode.NEW_OK)
-					&&reObj.getInt("value")<1){
-			
-				reObj = JSONObject.fromObject(JSONReslutUtil.getResultMessage(
-					ResourceBundleUtil.SENDURL + "/activity!create?",
-					"activity="+obj+"&userno=" + userNo + "&interfaceType=002&Mac=" + md5, "POST"));
-				if(reObj.getString("errorCode").equals(LotErrorCode.NEW_OK)){
-					JSONObject.fromObject(JSONReslutUtil.getResultMessage(
-							ResourceBundleUtil.LINKURL + "/taccounts/doDirectChargeProcess?",
-							"userno="+userNo
-							+"&amt="+reward
-							+"&accesstype=B"
-							+"&subchannel="+ ResourceBundleUtil.DEFALUT_SUBCHANNEL
-							+"&channel=2", "POST"));
-				}
-			}
-		
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-	}
 	
 }
 

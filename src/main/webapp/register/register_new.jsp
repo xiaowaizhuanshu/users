@@ -6,8 +6,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <jsp:include page="/common/ruyicai_include_common_top_http.jsp"></jsp:include>
 <base href="<%=basePath%>">
-<meta http-equiv="keywords" content="如意彩，用户注册，购彩服务"/>
-<meta http-equiv="description" content="现在免费注册成为如意彩用户，便能立刻享受便捷的购彩服务"/>
+<meta http-equiv="keywords" content="博雅彩，用户注册，购彩服务"/>
+<meta http-equiv="description" content="现在免费注册成为博雅彩用户，便能立刻享受便捷的购彩服务"/>
 <title>用户注册</title>
 <link type="text/css" href="/css/util.css" rel="stylesheet"/>
 <link type="text/css" href="/css/ruserAll.css" rel="stylesheet"/>
@@ -39,7 +39,7 @@ function checkCardNo(){
 	return false;
 }
 
-//如意彩点卡密码验证
+//博雅彩点卡密码验证
 function checkCardPwd(){
 	var cardpwd = $("#card_pwd").val();
 	if(cardpwd.trim()==""){
@@ -127,7 +127,7 @@ function countadd()
 					<td colspan="3">
 						<dl class="CheckBox RuyikaRegisterCheckBox">
 							<dt id="checkCard" class="RuyikaRegister" onmouseover="HoverOver($(this))" onmouseout="HoverOut($(this))" onclick="Switch($(this))" ControlTarget=".RuyikaRegister" ></dt>
-							<dd>使用如意彩票卡</dd>
+							<dd>使用博雅彩票卡</dd>
 						</dl>
 					</td>
 				</tr>

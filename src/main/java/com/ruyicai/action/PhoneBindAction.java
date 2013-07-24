@@ -74,9 +74,6 @@ public class PhoneBindAction extends BaseAction {
 						&& CommonUtil.getBackValue("errorCode", update).equals(
 								"0")) {
 
-					// 调用绑定手机号码成功赠送3元彩金
-					dto_Activity.inDataIsFirstRegistrGift(userno, mobileid);
-
 					// 修改成功后,更新缓存中的用户信息
 					JSONObject userinfo = update.getJSONObject("value");
 
@@ -122,7 +119,7 @@ public class PhoneBindAction extends BaseAction {
 	
 	public void phoneBandCheck(){
 		try{
-			logger.info("====如意彩手机绑定验证开始====");
+			logger.info("====博雅彩手机绑定验证开始====");
 			// 1.得到用户信息
 			String sessionid = session.getId();
 			String usermobile=request.getParameter("usermobile");
