@@ -17,6 +17,7 @@ import net.sf.json.JSONObject;
 
 import org.apache.log4j.Logger;
 
+import com.boyacai.common.util.AppAddr;
 import com.ruyicai.bean.Tuserinfo;
 import com.ruyicai.util.BaseAction;
 import com.ruyicai.util.CommonUtil;
@@ -319,7 +320,7 @@ public class UnitedLoginAction extends BaseAction {
 
 					if (getBigLogin(tuser.getUSERNO(), request)) {
 
-						response.getWriter().print(ResourceBundleUtil.APP_ADDRESS + "/index.html");
+						response.getWriter().print(AppAddr.getRchlwPath());
 						return null;
 					} else {
 						session.setAttribute("message", MessageUtil.TIAW_login_ExceptionMsg);
@@ -374,8 +375,8 @@ public class UnitedLoginAction extends BaseAction {
 					request.setAttribute("userinfo", tuserobj);
 					JSONReslutUtil.changeUserInfo(request);
 					response.getWriter().print(
-							"<script language='javascript'>window.location.href='" + ResourceBundleUtil.APP_ADDRESS
-									+ "/index.html'</script>");
+							"<script language='javascript'>window.location.href='" + AppAddr.getRchlwPath()
+									+ "'</script>");
 				}
 				return null;
 			} else {
@@ -695,8 +696,8 @@ public class UnitedLoginAction extends BaseAction {
 					request.setAttribute("userinfo", userinfo);
 					JSONReslutUtil.changeUserInfo(request);
 					response.getWriter().print(
-							"<script language='javascript'>window.location.href='" + ResourceBundleUtil.APP_ADDRESS
-									+ "/index.html'</script>");
+							"<script language='javascript'>window.location.href='" + AppAddr.getRchlwPath()
+									+ "'</script>");
 					return null;
 				}
 			} else {

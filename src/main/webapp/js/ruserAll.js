@@ -183,7 +183,7 @@ function selectToAction(){
 	var password = $("#password").val();
 	var username = $("#username").val(); //原有账户的用户名
 	if(radiotwo == true){
-		//已有如意彩账户
+		//已有博雅彩账户
 		if(passflag==1){
 			$.ajax({
 				type:'post',
@@ -205,7 +205,7 @@ function selectToAction(){
 			return ;
 		}
 		if ($("#registerXieyi").attr("checked")!=true) {
-			openAlert('您没有同意《如意彩服务协议》！');
+			openAlert('您没有同意《博雅彩服务协议》！');
 			return;
 		}
 		if(name=="" || name=="undefined"){

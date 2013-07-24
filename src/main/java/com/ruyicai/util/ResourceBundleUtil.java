@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 
 /**
  * 
- * 读取如意彩配置文件
+ * 读取博雅彩配置文件
  * 
 */
 public class ResourceBundleUtil {
@@ -16,7 +16,7 @@ public class ResourceBundleUtil {
 	public static final String LINKURL = rbint.getString("linkURL");
 	//新的链接地址
 	public static final String COOKIES_DOMAIN = rbint.getString("cookiesDomain");
-	//如意彩注册手机发送短信内容
+	//博雅彩注册手机发送短信内容
 	public static final String RYC_PHONEBANDSENDMSG = rbint.getString("ryc_phonebandsendMsg");
 	//设置开关短信地址
 	public static String LINKSMGURL = rbint.getString("linkSMGUrl");
@@ -54,11 +54,6 @@ public class ResourceBundleUtil {
 	public static Map<String, String> MAPQQLOGINURL = ResourceBundleUtil.getPropertiesList("qqLoginUrl");
 	public static Map<String, String> QQ_APP_ID = ResourceBundleUtil.getPropertiesList("qq_app_id");
 	public static Map<String, String> QQ_APP_KEY = ResourceBundleUtil.getPropertiesList("qq_app_key");
-
-	//各应用模块服务地址
-	public static final String APP_ADDRESS = rbint.getString("appAddress");
-	public static final String APP_ADDRESS_USER = rbint.getString("appAddressUser");
-	public static final String APP_ADDRESS_WAP = rbint.getString("appAddressWap");
 
 	/**
 	 * 返回对应网站所需内容在配置文件获取的方法

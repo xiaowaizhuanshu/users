@@ -6,9 +6,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <jsp:include page="/common/ruyicai_include_common_top_http.jsp"></jsp:include>
 <base href="<%=basePath%>">
-<title>如意彩会员登录，您可以使用QQ、支付宝快捷登陆</title>
+<title>博雅彩会员登录，您可以使用QQ、支付宝快捷登陆</title>
 <meta http-equiv="keywords" content="会员登录，QQ、支付宝快捷登陆"/>
-<meta http-equiv="description" content="如意彩会员快捷登录使用QQ、支付宝登陆让您购彩更快捷！"/>
+<meta http-equiv="description" content="博雅彩会员快捷登录使用QQ、支付宝登陆让您购彩更快捷！"/>
 <link type="text/css" href="/css/util.css" rel="stylesheet"/>
 <link type="text/css" href="/css/ruserAll.css" rel="stylesheet"/>
 <%-- <script type="text/javascript" src="<%=basePath%>/js/jqueryJS/jquery-1.5.min.js" ></script> --%>
@@ -64,11 +64,11 @@ function change(mag){
 		</div>
 		</form>
 		<div class="user_loginRight">
-			<h2>还不是如意彩用户？</h2>
-			<p>现在免费注册成为如意彩用户，便能立刻享受便捷的购彩服务。</p>
+			<h2>还不是博雅彩用户？</h2>
+			<p>现在免费注册成为博雅彩用户，便能立刻享受便捷的购彩服务。</p>
 			<div class="login_footerLine"><a href="/register/register_new.jsp" class="login_registration">注册新用户</a></div>
 			<div class="space15">&#160;</div>
-			<p>使用合作网站账号登录如意彩：</p>
+			<p>使用合作网站账号登录博雅彩：</p>
 			<p><a href="/function/unitedLogin!qqUnitedHandlyLogin" title="QQ" class="login_QQ">QQ</a><a href="/function/unitedLogin!alipayHandyLogin" title="支付宝" class="login_zhiFuBao">支付宝</a></p>
 		</div>
 	</div>

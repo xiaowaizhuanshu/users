@@ -8,13 +8,13 @@ import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
+import com.boyacai.common.util.AppAddr;
 import com.meetup.memcached.MemCacheInvoke;
 import com.ruyicai.util.BaseAction;
 import com.ruyicai.util.CommonUtil;
 import com.ruyicai.util.ErrorCode;
 import com.ruyicai.util.JSONReslutUtil;
 import com.ruyicai.util.MessageUtil;
-import com.ruyicai.util.ResourceBundleUtil;
 import com.ruyicai.util.MD5.PaySign;
 
 public class UserCenter extends BaseAction {
@@ -36,7 +36,7 @@ public class UserCenter extends BaseAction {
 		if (sign.equals("91ruyicai")) {
 			gotoValue = "91loginError";
 		}
-		
+
 		//获取用户名的登录名和密码
 		if (request.getMethod().equals("GET")) {
 			request.setAttribute("error", MessageUtil.TIAW_login_Fail);
@@ -48,7 +48,7 @@ public class UserCenter extends BaseAction {
 		request.setAttribute("userName", userName);
 		logger.info("用户登录：username=" + userName + "pssword=" + pass);
 		JSONObject user = new JSONObject();
-		
+
 		//验证用户信息输入是否正确
 		if (userName.isEmpty() || pass.isEmpty()) {
 			request.setAttribute("error", MessageUtil.TIAW_login_Fail);
@@ -65,7 +65,7 @@ public class UserCenter extends BaseAction {
 			}
 		}
 		request.getSession().removeAttribute("rand");
-		
+
 		try {
 			//根据用户名查询用户信息
 			user = JSONObject.fromObject(JSONReslutUtil.getResultMessage(USER_LINKURL + "/tuserinfoes?",
@@ -80,7 +80,7 @@ public class UserCenter extends BaseAction {
 				}
 			}
 			user = user.getJSONObject("value");
-			
+
 			//判断用户的状态，给予不同的提示，如果state为1的时候，为正常用户
 			if (user.getInt("state") == 0) {
 				request.setAttribute("error", MessageUtil.TIAW_login_ClosedUser);
@@ -90,7 +90,7 @@ public class UserCenter extends BaseAction {
 				return gotoValue;
 			}
 			request.getSession().setAttribute("userno", user.getString("userno"));
-			
+
 			//将查到的用户信息存入缓存
 			try {
 				MemCacheInvoke.mcc.set("Tuserinfo_" + user.getString("userno"), user.toString(), (24 * 3600));
@@ -100,7 +100,7 @@ public class UserCenter extends BaseAction {
 			String sessionid = request.getSession().getId();
 			CommonUtil.pageCookie(sessionid, request, response);
 			logger.info("比较userno与userinfoid的关系：" + user.getString("userno") + "=========" + sessionid);
-			
+
 			//获取用户从哪个页面传入的地址
 			String reqUrl = request.getParameter("reqUrl");
 			if (reqUrl != null && !reqUrl.equals("")) {
@@ -112,7 +112,7 @@ public class UserCenter extends BaseAction {
 					return null;
 				}
 			} else {
-				response.sendRedirect(ResourceBundleUtil.APP_ADDRESS + "/rchlw/index.jsp");
+				response.sendRedirect(AppAddr.getRchlwPath() + "/rchlw/index.jsp");
 				return null;
 			}
 
@@ -183,7 +183,7 @@ public class UserCenter extends BaseAction {
 				response.sendRedirect(reqUrl);
 				return null;
 			} else {
-				response.sendRedirect(ResourceBundleUtil.APP_ADDRESS_WAP);
+				response.sendRedirect(AppAddr.getWapPath());
 				return null;
 			}
 
