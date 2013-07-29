@@ -34,7 +34,7 @@ function change(mag){
   <div id="login_body">
 	<div class="user_login">
 		<a class="user_logo" href="http://www.ruyicai.com/index.html" title="首页"><img src="http://www.ruyicai.com/images/HomeLogo.gif" width="138" height="64" /></a>
-		<div class="ZhuCe_hotLine">客服热线：400-665-1000<a href="http://www.ruyicai.com/rules/customMessage.html" title="留言反馈">留言反馈</a>|<a href="http://www.ruyicai.com/bangzhuzhongxin.html" title="帮助中心">帮助中心</a>|<a href="http://www.ruyicai.com/index.html" title="返回首页">返回首页</a></div>
+		<div class="ZhuCe_hotLine">客服热线：400-856-1000<a href="http://www.ruyicai.com/rules/customMessage.html" title="留言反馈">留言反馈</a>|<a href="http://www.ruyicai.com/bangzhuzhongxin.html" title="帮助中心">帮助中心</a>|<a href="http://www.ruyicai.com/index.html" title="返回首页">返回首页</a></div>
 	</div>
 	<div class="user_loginTitle">用户登录</div>
 	<input id="msg" value="${msg}" type="hidden"/>
@@ -71,7 +71,7 @@ function change(mag){
 	</div>
 	<div id="footer">
 		<div class="copyright">Copyright© 2009-2014博雅彩彩票网 All rights reserved  增值电信业务经营许可证（B2-20100007）　京ICP备10007936号</div>
-	    <div class="lianxi">客服热线：400-665-1000　 客服邮箱：<a href="mailto:service@ruyicai.com">service@ruyicai.com</a></div>
+	    <div class="lianxi">客服热线：400-856-1000　 客服邮箱：<a href="mailto:service@boyacai.com">service@boyacai.com</a></div>
 		<div class="lianxi">博雅彩温馨提示：彩票乃公益事业，投注请量力而行，不向未满18周岁的青少年出售彩票！</div>
 	</div>
 </div>
