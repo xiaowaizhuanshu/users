@@ -932,7 +932,7 @@ public class CommonUtil {
 			ttss = "sessionID错误";
 		}
 		if (error_code.equals("000012")) {
-			ttss = "该号码已被暂停使用，请联系客服 400-665-1000重新激活";
+			ttss = "该号码已被暂停使用，请联系客服 400-856-1000重新激活";
 		}
 		if (error_code.equals("070003")) {
 			ttss = "用户状态为待激活";
@@ -1860,6 +1860,7 @@ public class CommonUtil {
 		userCookie.setDomain(ResourceBundleUtil.COOKIES_DOMAIN);
 		userCookie.setMaxAge(-1);
 		response.addCookie(userCookie);
+		logger.info("[用户登陆成功] cookieName="+cookieName+";sessionId="+sessionId+";Domain="+ResourceBundleUtil.COOKIES_DOMAIN);
 	}
 
 }
