@@ -275,6 +275,7 @@
 				<agencyUrl>http://192.168.15.15:9988/agencycenter</agencyUrl>
 				<!-- 博雅彩点卡充值 -->
 				<msbankUrl>http://192.168.15.15:9999/ChargeCenter</msbankUrl>
+				<!-- <msbankUrl>http://127.0.0.1:9999/ChargeCenter</msbankUrl> -->
 				<!-- 短信地址 -->
 				<linkSMGUrl>http://192.168.15.15:7777/msgcenter/</linkSMGUrl>
 
@@ -290,8 +291,8 @@
 
 				<!-- 后台链接地址 <baseUrl>http\://219.148.162.70\:8000/jrtLot/</baseUrl> -->
 				<!-- 积分地址 <linkSCOREUrl>http\://192.168.0.118:8000/scorecenter</linkSCOREUrl> -->
-				<!-- 赠送彩金 <sendUrl>http://jrtcms.ruyicai.com\:8080/WebInterface</sendUrl> -->
-				<!-- 短信计数 <linksmsCount>http://jrtcms.ruyicai.com\:8080/web</linksmsCount> -->
+				<!-- 赠送彩金 <sendUrl>http://jrtcms.boyacai.com\:8080/WebInterface</sendUrl> -->
+				<!-- 短信计数 <linksmsCount>http://jrtcms.boyacai.com\:8080/web</linksmsCount> -->
 			</properties>
 		</profile>
 
@@ -326,8 +327,8 @@
 
 				<!-- 后台链接地址 <baseUrl>http\://219.148.162.70\:8000/jrtLot/</baseUrl> -->
 				<!-- 积分地址 <linkSCOREUrl>http\://192.168.0.118:8000/scorecenter</linkSCOREUrl> -->
-				<!-- 赠送彩金 <sendUrl>http://jrtcms.ruyicai.com\:8080/WebInterface</sendUrl> -->
-				<!-- 短信计数 <linksmsCount>http://jrtcms.ruyicai.com\:8080/web</linksmsCount> -->
+				<!-- 赠送彩金 <sendUrl>http://jrtcms.boyacai.com\:8080/WebInterface</sendUrl> -->
+				<!-- 短信计数 <linksmsCount>http://jrtcms.boyacai.com\:8080/web</linksmsCount> -->
 			</properties>
 		</profile>
 	</profiles>

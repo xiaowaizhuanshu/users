@@ -59,7 +59,7 @@ function change(mag){
 			</s:if>
 				<tr>
 					<td colspan="4"><input id="login_submit" type="submit" value="登录" class="login_inpuBtn"  />
-					<a href="http://91.ruyicai.com/rules/findPwd_new.html" title="忘记密码">忘记密码?</a></td>
+					<a href="http://91.boyacai.com/rules/findPwd_new.html" title="忘记密码">忘记密码?</a></td>
 				</tr>
 			</table>
 		</div>

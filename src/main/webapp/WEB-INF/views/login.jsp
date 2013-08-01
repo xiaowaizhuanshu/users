@@ -14,8 +14,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>博雅彩会员登录，您可以使用QQ、支付宝快捷登陆</title>
 <meta http-equiv="keywords" content="会员登录，QQ、支付宝快捷登陆"/>
 <meta http-equiv="description" content="博雅彩会员快捷登录使用QQ、支付宝登陆让您购彩更快捷！"/>
-<link type="text/css" href="http://www.ruyicai.com/css/util.css" rel="stylesheet"/>
-<link type="text/css" href="http://www.ruyicai.com/css/ruserAll.css" rel="stylesheet"/>
+<link type="text/css" href="<%=com.boyacai.common.util.AppAddr.getRchlwPath() %>/css/util.css" rel="stylesheet"/>
+<link type="text/css" href="<%=com.boyacai.common.util.AppAddr.getRchlwPath() %>/css/ruserAll.css" rel="stylesheet"/>
 <script type="text/javascript" src="<%=basePath%>/js/jqueryJS/jquery-1.5.min.js" ></script>
 <script type="text/javascript">
 <!--
@@ -33,8 +33,8 @@ function change(mag){
 <div id="indexLogin">
   <div id="login_body">
 	<div class="user_login">
-		<a class="user_logo" href="http://www.ruyicai.com/index.html" title="首页"><img src="http://www.ruyicai.com/images/HomeLogo.gif" width="138" height="64" /></a>
-		<div class="ZhuCe_hotLine">客服热线：400-856-1000<a href="http://www.ruyicai.com/rules/customMessage.html" title="留言反馈">留言反馈</a>|<a href="http://www.ruyicai.com/bangzhuzhongxin.html" title="帮助中心">帮助中心</a>|<a href="http://www.ruyicai.com/index.html" title="返回首页">返回首页</a></div>
+		<a class="user_logo" href="<%=com.boyacai.common.util.AppAddr.getRchlwPath() %>/index.html" title="首页"><img src="<%=com.boyacai.common.util.AppAddr.getRchlwPath() %>/images/HomeLogo.gif" width="138" height="64" /></a>
+		<div class="ZhuCe_hotLine">客服热线：400-856-1000<a href="<%=com.boyacai.common.util.AppAddr.getRchlwPath() %>/rules/customMessage.html" title="留言反馈">留言反馈</a>|<a href="<%=com.boyacai.common.util.AppAddr.getRchlwPath() %>/bangzhuzhongxin.html" title="帮助中心">帮助中心</a>|<a href="<%=com.boyacai.common.util.AppAddr.getRchlwPath() %>/index.html" title="返回首页">返回首页</a></div>
 	</div>
 	<div class="user_loginTitle">用户登录</div>
 	<input id="msg" value="${msg}" type="hidden"/>
@@ -55,7 +55,7 @@ function change(mag){
 				</tr>
 				<tr>
 					<td colspan="4"><input id="login_submit" type="submit" value="登录" class="login_inpuBtn"  />
-					<a href="http://www.ruyicai.com/rules/findPwd_new.html" title="忘记密码">忘记密码?</a></td>
+					<a href="<%=com.boyacai.common.util.AppAddr.getRchlwPath() %>/rules/findPwd_new.html" title="忘记密码">忘记密码?</a></td>
 				</tr>
 			</table>
 		</div>
@@ -66,7 +66,7 @@ function change(mag){
 			<div class="login_footerLine"><a href="/register/register_new.jsp" class="login_registration">注册新用户</a></div>
 			<div class="space15">&#160;</div>
 			<p>使用合作网站账号登录博雅彩：</p>
-			<p><a href="http://www.ruyicai.com/chlw/function/unitedLogin!qqUnitedHandlyLogin" title="QQ" class="login_QQ">QQ</a><a href="http://www.ruyicai.com/chlw/function/unitedLogin!alipayHandyLogin" title="支付宝" class="login_zhiFuBao">支付宝</a></p>
+			<p><a href="<%=com.boyacai.common.util.AppAddr.getRchlwPath() %>/chlw/function/unitedLogin!qqUnitedHandlyLogin" title="QQ" class="login_QQ">QQ</a><a href="<%=com.boyacai.common.util.AppAddr.getRchlwPath() %>/chlw/function/unitedLogin!alipayHandyLogin" title="支付宝" class="login_zhiFuBao">支付宝</a></p>
 		</div>
 	</div>
 	<div id="footer">

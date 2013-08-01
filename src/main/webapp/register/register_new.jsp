@@ -91,7 +91,7 @@ function countadd()
 	<jsp:include page="/common/ruyicai_include_common_new_top.jsp"></jsp:include>
 	<div class="ZhuCe_body" id="registerbody">
 		<div class="ZhuCe_titleBg">
-			<span class="ZhuCe_titleLeft">快速注册</span><span class="ZhuCe_titleRight">我已经注册，现在就<a href="http://users.ruyicai.com/login.jsp" title="登录">登录</a></span>
+			<span class="ZhuCe_titleLeft">快速注册</span><span class="ZhuCe_titleRight">我已经注册，现在就<a href="<%=com.boyacai.common.util.AppAddr.getUsersPath() %>/login.jsp" title="登录">登录</a></span>
 		</div>
 		<form name="userPhoneRegisterForm" id="userPhoneRegisterForm" method="post">
 			<table border="0" cellspacing="0" cellpadding="0" class="ZhuCe_table table_space">
@@ -142,7 +142,7 @@ function countadd()
 				</tr>
 				<tr>
 					<th>&#160;</th>
-					<td colspan="3" class="special_td"><input type="checkbox" checked="checked" id="registerXieyi"/>我已满十八周岁且已阅读并同意<a href="http://www.ruyicai.com/rules/userProtocol.html" target="_blank" title="用户服务协议" >《用户服务协议》</a></td>
+					<td colspan="3" class="special_td"><input type="checkbox" checked="checked" id="registerXieyi"/>我已满十八周岁且已阅读并同意<a href="<%=com.boyacai.common.util.AppAddr.getRchlwPath() %>/rules/userProtocol.html" target="_blank" title="用户服务协议" >《用户服务协议》</a></td>
 				</tr>
 				<tr>
 					<th>&#160;</th>

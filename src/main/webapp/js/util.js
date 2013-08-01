@@ -1172,7 +1172,7 @@ function addCookie(){
 function setHomepage(){
 	if (document.all){
 		document.body.style.behavior='url(#default#homepage)';
-		document.body.setHomePage('http://www.ruyicai.com');
+		document.body.setHomePage(appAddr.rchlw);
 		}
 	else if (window.sidebar){
 		if(window.netscape){
@@ -1183,8 +1183,8 @@ function setHomepage(){
 			 }
 		   } 
 		    var prefs = Components.classes['@mozilla.org/preferences-service;1'].getService(Components.interfaces.nsIPrefBranch);
-			if(confirm(decodeURI(EncodeUtf8("是否要将"))+"'http://www.ruyicai.com'"+decodeURI(EncodeUtf8("设置为首页")))){
-		    prefs.setCharPref('browser.startup.homepage','http://www.ruyicai.com');
+			if(confirm(decodeURI(EncodeUtf8("是否要将"))+"'"+appAddr.rchlw+"'"+decodeURI(EncodeUtf8("设置为首页")))){
+		    prefs.setCharPref('browser.startup.homepage',appAddr.rchlw);
 			}
 		 }
 	}
@@ -1580,7 +1580,7 @@ function ajaxOutToLogin(){
 	    success: function(msg){
 			var reqUrl = window.location.href;
 			var url = encodeURIComponent(reqUrl);
-			window.location.href="http://users.ruyicai.com/login.jsp?reqUrl="+url;
+			window.location.href=appAddr.users+"/login.jsp?reqUrl="+url;
 		}
 
 	});
@@ -3524,7 +3524,7 @@ function allYearsTouzhu(){
 		$("#final_money").html(0);
 		//弹出层
 		loginShow();
-		var str ="<form action='http://users.ruyicai.com/login.jsp' id='topjump' method='post' target='_blank'></form>";
+		var str ="<form action='"+appAddr.users+"/login.jsp' id='topjump' method='post' target='_blank'></form>";
 		$("body").append(str);
 		$("#topjump").submit();
 		$("body").remove(str);
