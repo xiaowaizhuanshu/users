@@ -17,7 +17,7 @@
 </ul>
 <table cellspacing="0" cellpadding="0" class="ZhuCe_endTable">
 	<tr>
-		<td width="126"><a href="http://91.ruyicai.com/rules/user.html?key=4" class="ZhuCe_btn" title="立即充值">立即充值</a></td>
+		<td width="126"><a href="http://91.boyacai.com/rules/user.html?key=4" class="ZhuCe_btn" title="立即充值">立即充值</a></td>
 		<th>充值免手续费</th>
 	</tr>
 </table>
@@ -30,12 +30,12 @@
 		<td colspan="3"><b>您还可以：</b></td>
 	</tr>
 	<tr>
-		<td width="30%"><a href="http://91.ruyicai.com/rules/user.html?key=33" class="ZhuCe_greyBtn" title="完善购彩资料">完善购彩资料</a></td>
+		<td width="30%"><a href="http://91.boyacai.com/rules/user.html?key=33" class="ZhuCe_greyBtn" title="完善购彩资料">完善购彩资料</a></td>
 		<th width="20%">实名信息</th>
 		<td width="50%">购彩、领奖的实名认证信息</td>
 	</tr>
 	<tr>
-		<td><a href="http://91.ruyicai.com/fucaituijian/fucaituijian_shuangseqiu_1.html" class="ZhuCe_greyBtn" title="浏览专家推荐">浏览专家推荐</a></td>
+		<td><a href="http://91.boyacai.com/fucaituijian/fucaituijian_shuangseqiu_1.html" class="ZhuCe_greyBtn" title="浏览专家推荐">浏览专家推荐</a></td>
 		<th>专家说彩</th>
 		<td>各彩种专家每期倾情奉献推荐号码</td>
 	</tr>
@@ -45,7 +45,7 @@
 <!--右下的表格-->
 <table width="50%" cellspacing="0" cellpadding="0" class="ZhuCe_buy">
 	<tr>
-		<td colspan="3"><em>进入<a href="http://91.ruyicai.com/include/goucaidating.html" title="购彩大厅">购彩大厅>></a></em></td>
+		<td colspan="3"><em>进入<a href="http://91.boyacai.com/include/goucaidating.html" title="购彩大厅">购彩大厅>></a></em></td>
 	</tr>
 	<tr><td colspan="3">&nbsp;</td></tr>
 	<tr>
@@ -59,8 +59,8 @@
 					<td>每周二、四、日晚开奖，单注最高奖金1000万元！</td>
 				</tr>
 				<tr>
-					<th><a href="http://91.ruyicai.com/shuangseqiu.html" class="ZhuCe_greyBtnS" title="立即投注">立即投注</a></th>
-					<th><a href="http://91.ruyicai.com/hemai/shuanseqiuhemai.html" class="ZhuCe_greyBtnS" title="参与合买">参与合买</a></th>
+					<th><a href="http://91.boyacai.com/shuangseqiu.html" class="ZhuCe_greyBtnS" title="立即投注">立即投注</a></th>
+					<th><a href="http://91.boyacai.com/hemai/shuanseqiuhemai.html" class="ZhuCe_greyBtnS" title="参与合买">参与合买</a></th>
 				</tr>
 
 			</table>
@@ -77,8 +77,8 @@
 					<td>每周一、三、六晚开奖，3元可赢取1600万元！</td>
 				</tr>
 				<tr>
-					<th><a href="http://91.ruyicai.com/daletou.html" class="ZhuCe_greyBtnS" title="立即投注">立即投注</a></th>
-					<th><a href="http://91.ruyicai.com/hemai/daletouhemai.html" class="ZhuCe_greyBtnS" title="参与合买">参与合买</a></th>
+					<th><a href="http://91.boyacai.com/daletou.html" class="ZhuCe_greyBtnS" title="立即投注">立即投注</a></th>
+					<th><a href="http://91.boyacai.com/hemai/daletouhemai.html" class="ZhuCe_greyBtnS" title="参与合买">参与合买</a></th>
 				</tr>
 			</table>
 		</td>

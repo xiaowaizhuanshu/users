@@ -55,6 +55,6 @@ $("#login").click(function(){
 			}
 });
 $("#loginQu").click(function(){
-	window.location.href="http://www.ruyicai.com/rules/customesService.html";
+	window.location.href="<%=com.boyacai.common.util.AppAddr.getRchlwPath() %>/rules/customesService.html";
 });
 </script>

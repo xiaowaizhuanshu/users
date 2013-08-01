@@ -237,7 +237,7 @@ function registerUser(name,password,inputyzm){
 				error:function(data){alert("绑定用户出现异常");},
 				success:function(data){
 					if(data=="success"){
-						window.location.href='http://www.ruyicai.com/index.html';
+						window.location.href=appAddr.rchlw+'/index.jsp';
 					}else if(data=="yzmwrong"){
 						window.location.href='/unitedLogin/setNickName_logistics.jsp';
 					}else{
@@ -272,7 +272,7 @@ function setNickName(){
 		data:parameters,//参数
 		success:function (data){
 			if(data=="success")
-				window.location.href="http://www.ruyicai.com/index.html";
+				window.location.href=appAddr.rchlw+"/index.jsp";
 		}
 	});
 

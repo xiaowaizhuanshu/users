@@ -95,7 +95,7 @@ function countadd()
 
 	<div class="ZhuCe_body" id="registerbody">
 		<div class="ZhuCe_titleBg">
-			<span class="ZhuCe_titleLeft">快速注册</span><span class="ZhuCe_titleRight">我已经注册，现在就<a href="http://users.ruyicai.com/91login.jsp" title="登录">登录</a></span>
+			<span class="ZhuCe_titleLeft">快速注册</span><span class="ZhuCe_titleRight">我已经注册，现在就<a href="<%=com.boyacai.common.util.AppAddr.getUsersPath() %>/91login.jsp" title="登录">登录</a></span>
 		</div>
 		<form name="userPhoneRegisterForm" id="userPhoneRegisterForm" method="post">
 		<input name="sign" type="hidden"  value="91ruyicai"/>
@@ -147,7 +147,7 @@ function countadd()
 				</tr>
 				<tr>
 					<th>&#160;</th>
-					<td colspan="3" class="special_td"><input type="checkbox" checked="checked" id="registerXieyi"/>我已满十八周岁且已阅读并同意<a href="http://91.ruyicai.com/rules/userProtocol.html" target="_blank" title="用户服务协议" >《用户服务协议》</a></td>
+					<td colspan="3" class="special_td"><input type="checkbox" checked="checked" id="registerXieyi"/>我已满十八周岁且已阅读并同意<a href="http://91.boyacai.com/rules/userProtocol.html" target="_blank" title="用户服务协议" >《用户服务协议》</a></td>
 				</tr>
 				<tr>
 					<th>&#160;</th>
